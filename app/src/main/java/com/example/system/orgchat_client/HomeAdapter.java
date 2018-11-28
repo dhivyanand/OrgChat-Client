@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 /**
  * Created by System on 28/11/18.
  */
@@ -43,6 +42,9 @@ public class HomeAdapter extends BaseAdapter {
 
         ImageView icon = (ImageView)root.findViewById(R.id.icon);
         TextView title = (TextView)root.findViewById(R.id.title);
+
+        icon.setImageResource(Constant.home_menu_icon[i]);
+        title.setText(Constant.home_menu_title[i]);
 
         return root;
     }
