@@ -2,6 +2,8 @@ package com.example.system.orgchat_client;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 public class home extends AppCompatActivity {
@@ -15,6 +17,13 @@ public class home extends AppCompatActivity {
 
         grid = (GridView)findViewById(R.id.home_grid);
         grid.setAdapter(new HomeAdapter(home.this));
+        grid.setNumColumns(2);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                
+            }
+        });
 
     }
 }
