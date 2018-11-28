@@ -1,6 +1,7 @@
 package com.example.system.orgchat_client;
 
 import android.content.Context;
+import android.provider.SyncStateContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,6 @@ public class HomeAdapter extends BaseAdapter {
         ImageView icon = (ImageView)root.findViewById(R.id.icon);
         TextView title = (TextView)root.findViewById(R.id.title);
 
-        return null;
+        return root;
     }
 }
