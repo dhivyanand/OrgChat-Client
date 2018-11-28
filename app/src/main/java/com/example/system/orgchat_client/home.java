@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,8 @@ public class home extends AppCompatActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                
+                if (i == 1)
+                    startActivity(new Intent(home.this,Announcements.class));
             }
         });
 

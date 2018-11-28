@@ -2,9 +2,12 @@ package com.example.system.orgchat_client;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,6 +44,19 @@ public class AnnouncementListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+
+        LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View root = layoutInflater.inflate(R.layout.announcement_list_adapter,null);
+        ImageView icon = (ImageView)root.findViewById(R.id.icon);
+        TextView title = (TextView)root.findViewById(R.id.title);
+
+        if(image == null)
+            icon.setImageResource(Constant.home_menu_icon[1]);
+        else
+            icon.setImageBitmap(image.get(i));
+
+        title.setText(text.get(i).toString());
+
+        return root;
     }
 }
