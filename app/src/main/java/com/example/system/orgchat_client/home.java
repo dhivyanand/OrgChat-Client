@@ -14,6 +14,7 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         grid = (GridView)findViewById(R.id.home_grid);
+        grid.setAdapter(new HomeAdapter(home.this));
 
     }
 }

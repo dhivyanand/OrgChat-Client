@@ -21,7 +21,7 @@ public class HomeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return 4;
     }
 
     @Override
@@ -31,15 +31,14 @@ public class HomeAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return 4;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        LayoutInflater layoutInflater = LayoutInflater.from(c);
+        LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View root = layoutInflater.inflate(R.layout.home_adapter_layout,null);
-
         ImageView icon = (ImageView)root.findViewById(R.id.icon);
         TextView title = (TextView)root.findViewById(R.id.title);
 
