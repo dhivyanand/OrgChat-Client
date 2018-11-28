@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context="com.example.system.orgchat_client.Login">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/space" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/space"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:ems="10"
+        android:hint="Registration"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAlignment="center" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space2"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:text="Login"
+        android:textColor="#FFF" />
 </RelativeLayout>
