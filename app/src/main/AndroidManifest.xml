@@ -19,7 +19,8 @@
         <activity android:name=".Login" />
         <activity android:name=".home" />
         <activity android:name=".Profile" />
-        <activity android:name=".Announcements"></activity>
+        <activity android:name=".Announcements" />
+        <activity android:name=".Suggestion"></activity>
     </application>
 
 </manifest>
