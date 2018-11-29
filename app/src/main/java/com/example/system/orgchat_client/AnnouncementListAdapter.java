@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -50,11 +51,7 @@ public class AnnouncementListAdapter extends BaseAdapter {
         ImageView icon = (ImageView)root.findViewById(R.id.icon);
         TextView title = (TextView)root.findViewById(R.id.title);
 
-        if(image == null)
-            icon.setImageResource(Constant.home_menu_icon[1]);
-        else
-            icon.setImageBitmap(image.get(i));
-
+        icon.setImageBitmap(image.get(i));
         title.setText(text.get(i).toString());
 
         return root;
