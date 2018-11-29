@@ -34,6 +34,12 @@ public class Suggestion extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String message = suggestion.getText().toString();
+
+                if(message != null){
+
+                }
+
             }
         });
 
