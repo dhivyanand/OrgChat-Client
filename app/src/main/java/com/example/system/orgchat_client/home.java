@@ -24,6 +24,8 @@ public class home extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 1)
                     startActivity(new Intent(home.this,Announcements.class));
+                if (i == 2)
+                    startActivity(new Intent(home.this,Suggestion.class));
             }
         });
 

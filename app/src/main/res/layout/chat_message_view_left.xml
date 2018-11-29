@@ -13,4 +13,5 @@
     android:text="TextView"
     android:textAlignment="center"
     android:textColor="#FFF"
+    android:gravity="left"
     android:textSize="18sp" />

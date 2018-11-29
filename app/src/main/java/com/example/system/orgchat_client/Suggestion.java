@@ -18,6 +18,8 @@ public class Suggestion extends AppCompatActivity {
     ArrayList<String> text;
     ArrayList<Character> direction;
 
+    MessageAdapter message_adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,9 @@ public class Suggestion extends AppCompatActivity {
         text = new ArrayList<String>();
         direction = new ArrayList<Character>();
 
+        message_adapter = new MessageAdapter(Suggestion.this,text,direction);
+        chatView.setAdapter(message_adapter);
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +42,9 @@ public class Suggestion extends AppCompatActivity {
                 String message = suggestion.getText().toString();
 
                 if(message != null){
-
+                    text.add(message);
+                    direction.add('R');
+                    message_adapter.notifyDataSetChanged();
                 }
 
             }
