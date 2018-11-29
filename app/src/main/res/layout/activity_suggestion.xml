@@ -20,6 +20,7 @@
         android:layout_above="@+id/suggestion"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:divider="@null"
         android:id="@+id/chatView" />
 
     <Button

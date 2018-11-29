@@ -45,6 +45,7 @@ public class Suggestion extends AppCompatActivity {
                     text.add(message);
                     direction.add('R');
                     message_adapter.notifyDataSetChanged();
+                    suggestion.setText(null);
                 }
 
             }
