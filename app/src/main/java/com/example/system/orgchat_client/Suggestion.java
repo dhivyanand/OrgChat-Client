@@ -16,5 +16,10 @@ public class Suggestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestion);
+
+        chatView = (ListView)findViewById(R.id.chatView);
+        suggestion = (EditText)findViewById(R.id.suggestion);
+        send = (Button)findViewById(R.id.send);
+
     }
 }
