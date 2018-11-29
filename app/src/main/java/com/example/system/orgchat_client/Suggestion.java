@@ -7,11 +7,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class Suggestion extends AppCompatActivity {
 
     ListView chatView;
     EditText suggestion;
     Button send;
+
+    ArrayList<String> text;
+    ArrayList<Character> direction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,9 @@ public class Suggestion extends AppCompatActivity {
         chatView = (ListView)findViewById(R.id.chatView);
         suggestion = (EditText)findViewById(R.id.suggestion);
         send = (Button)findViewById(R.id.send);
+
+        text = new ArrayList<String>();
+        direction = new ArrayList<Character>();
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
