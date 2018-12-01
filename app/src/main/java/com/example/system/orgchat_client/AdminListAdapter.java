@@ -61,7 +61,8 @@ public class AdminListAdapter extends BaseAdapter {
 
         text_name.setText(name.get(i).toString());
         text_notification.setText(notification.get(i).toString());
-        icon.setImageBitmap(image.get(i));
+        if (image.get(i) != null)
+            icon.setImageBitmap(image.get(i));
 
         return root;
     }
