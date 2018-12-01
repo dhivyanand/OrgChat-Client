@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -42,6 +43,11 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
+
+                Intent suggestion = new Intent(Admin.this,Suggestion.class);
+                suggestion.putExtra("admin_name",name);
+                startActivity(suggestion);
+
             }
         });
 

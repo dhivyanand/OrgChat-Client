@@ -20,10 +20,14 @@ public class Suggestion extends AppCompatActivity {
 
     MessageAdapter message_adapter;
 
+    String admin_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestion);
+
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("admin_name"));
 
         chatView = (ListView)findViewById(R.id.chatView);
         suggestion = (EditText)findViewById(R.id.suggestion);
