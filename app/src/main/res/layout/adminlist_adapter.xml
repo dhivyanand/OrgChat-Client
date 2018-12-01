@@ -33,10 +33,10 @@
         android:id="@+id/notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name"
         android:layout_alignBottom="@+id/name"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="17dp"
         android:paddingRight="10dp"
         android:text="TextView" />
 </RelativeLayout>
