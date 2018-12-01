@@ -5,7 +5,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,6 +37,13 @@ public class Admin extends AppCompatActivity {
         AdminListAdapter adapter = new AdminListAdapter(Admin.this, name , notification , image);
 
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
+            }
+        });
 
 
     }
