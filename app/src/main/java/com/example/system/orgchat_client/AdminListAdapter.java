@@ -1,3 +1,5 @@
+package com.example.system.orgchat_client;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -61,6 +63,6 @@ public class AdminListAdapter extends BaseAdapter {
         text_notification.setText(notification.get(i).toString());
         icon.setImageBitmap(image.get(i));
 
-        return null;
+        return root;
     }
 }
