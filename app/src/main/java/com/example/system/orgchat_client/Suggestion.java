@@ -46,6 +46,16 @@ public class Suggestion extends AppCompatActivity {
                     direction.add('R');
                     message_adapter.notifyDataSetChanged();
                     suggestion.setText(null);
+                    try{
+                        Thread.sleep(500);
+                        text.add(message);
+                        direction.add('L');
+                        message_adapter.notifyDataSetChanged();
+
+                    }catch(Exception e){
+
+                    }
+
                 }
 
             }

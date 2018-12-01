@@ -8,6 +8,6 @@ import com.example.system.orgchat_client.R;
 
 public class Constant {
 
-    static String home_menu_title[] = {"Profile","Announcements","Suggestions","Compliants"};
+    static String home_menu_title[] = {"Profile","Circulars","Suggestions","Compliants"};
     static int home_menu_icon[] = {R.mipmap.menu_profile_foreground,R.mipmap.menu_announcement_foreground,R.mipmap.menu_suggestion_foreground,R.mipmap.menu_compliant_foreground};
 }
