@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,10 @@ public class Announcements extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent notification = new Intent(Announcements.this,Notifications.class);
+                notification.putExtra("id","1");
+                startActivity(notification);
 
             }
         });
