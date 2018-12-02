@@ -17,11 +17,13 @@ public class Admin extends AppCompatActivity {
     ArrayList<String> name,notification;
     ArrayList<Bitmap> image;
     ListView list;
-
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
+        type = getIntent().getStringExtra("type");
 
         list = (ListView)findViewById(R.id.admin_list);
 
@@ -42,9 +44,10 @@ public class Admin extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
 
-                Intent suggestion = new Intent(Admin.this,chatRoom.class);
-                suggestion.putExtra("admin_name",name);
-                startActivity(suggestion);
+                Intent chat = new Intent(Admin.this,chatRoom.class);
+                chat.putExtra("admin_name",name);
+                chat.putExtra("type",type);
+                startActivity(chat);
 
             }
         });

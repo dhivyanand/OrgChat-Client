@@ -20,14 +20,31 @@ public class chatRoom extends AppCompatActivity {
 
     MessageAdapter message_adapter;
 
-    String admin_name;
+    String admin_name,type;
+
+    void suggestion(){
+
+    }
+
+    void compliant(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatroom);
 
-        getSupportActionBar().setTitle(getIntent().getExtras().getString("admin_name"));
+        admin_name = getIntent().getExtras().getString("admin_name");
+
+        type = getIntent().getExtras().getString("type");
+
+        getSupportActionBar().setTitle(admin_name);
+
+        if(type == "suggestion")
+            suggestion();
+        else if (type == "compliant")
+            compliant();
 
         chatView = (ListView)findViewById(R.id.chatView);
         message = (EditText)findViewById(R.id.suggestion);
