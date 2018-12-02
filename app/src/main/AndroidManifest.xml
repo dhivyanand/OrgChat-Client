@@ -22,7 +22,8 @@
         <activity android:name=".Announcements" />
         <activity android:name=".chatRoom" />
         <activity android:name=".Admin" />
-        <activity android:name=".admin_list_adapter_layout"></activity>
+        <activity android:name=".admin_list_adapter_layout" />
+        <activity android:name=".Notifications"></activity>
     </application>
 
 </manifest>
