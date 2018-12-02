@@ -1,11 +1,14 @@
 package com.example.system.orgchat_client;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,11 +25,25 @@ public class chatRoom extends AppCompatActivity {
 
     String admin_name,type;
 
-    void suggestion(){
+    void suggestion(Context c){
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 
-    void compliant(){
+    void compliant(Context c){
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 
@@ -41,46 +58,20 @@ public class chatRoom extends AppCompatActivity {
 
         getSupportActionBar().setTitle(admin_name);
 
-        if(type == "suggestion")
-            suggestion();
-        else if (type == "compliant")
-            compliant();
-
         chatView = (ListView)findViewById(R.id.chatView);
         message = (EditText)findViewById(R.id.suggestion);
         send = (Button)findViewById(R.id.send);
+
+        if(TextUtils.equals(type,"suggestion"))
+            suggestion(chatRoom.this);
+        else if (TextUtils.equals(type,"compliant"))
+            compliant(chatRoom.this);
 
         text = new ArrayList<String>();
         direction = new ArrayList<Character>();
 
         message_adapter = new MessageAdapter(chatRoom.this,text,direction);
         chatView.setAdapter(message_adapter);
-
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String message = chatRoom.this.message.getText().toString();
-
-                if(message != null){
-                    text.add(message);
-                    direction.add('R');
-                    message_adapter.notifyDataSetChanged();
-                    chatRoom.this.message.setText(null);
-                    try{
-                        Thread.sleep(500);
-                        text.add(message);
-                        direction.add('L');
-                        message_adapter.notifyDataSetChanged();
-
-                    }catch(Exception e){
-
-                    }
-
-                }
-
-            }
-        });
 
     }
 }
