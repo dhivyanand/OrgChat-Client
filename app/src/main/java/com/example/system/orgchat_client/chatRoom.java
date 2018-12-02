@@ -9,10 +9,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Suggestion extends AppCompatActivity {
+public class chatRoom extends AppCompatActivity {
 
     ListView chatView;
-    EditText suggestion;
+    EditText message;
     Button send;
 
     ArrayList<String> text;
@@ -25,31 +25,31 @@ public class Suggestion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_suggestion);
+        setContentView(R.layout.activity_chatroom);
 
         getSupportActionBar().setTitle(getIntent().getExtras().getString("admin_name"));
 
         chatView = (ListView)findViewById(R.id.chatView);
-        suggestion = (EditText)findViewById(R.id.suggestion);
+        message = (EditText)findViewById(R.id.suggestion);
         send = (Button)findViewById(R.id.send);
 
         text = new ArrayList<String>();
         direction = new ArrayList<Character>();
 
-        message_adapter = new MessageAdapter(Suggestion.this,text,direction);
+        message_adapter = new MessageAdapter(chatRoom.this,text,direction);
         chatView.setAdapter(message_adapter);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String message = suggestion.getText().toString();
+                String message = chatRoom.this.message.getText().toString();
 
                 if(message != null){
                     text.add(message);
                     direction.add('R');
                     message_adapter.notifyDataSetChanged();
-                    suggestion.setText(null);
+                    chatRoom.this.message.setText(null);
                     try{
                         Thread.sleep(500);
                         text.add(message);

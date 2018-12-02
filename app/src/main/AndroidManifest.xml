@@ -20,7 +20,7 @@
         <activity android:name=".home" />
         <activity android:name=".Profile" />
         <activity android:name=".Announcements" />
-        <activity android:name=".Suggestion" />
+        <activity android:name=".chatRoom" />
         <activity android:name=".Admin" />
         <activity android:name=".admin_list_adapter_layout"></activity>
     </application>

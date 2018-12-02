@@ -2,7 +2,6 @@ package com.example.system.orgchat_client;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,7 +42,7 @@ public class Admin extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
 
-                Intent suggestion = new Intent(Admin.this,Suggestion.class);
+                Intent suggestion = new Intent(Admin.this,chatRoom.class);
                 suggestion.putExtra("admin_name",name);
                 startActivity(suggestion);
 
