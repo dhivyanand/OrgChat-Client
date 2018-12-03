@@ -32,6 +32,16 @@ public class chatRoom extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!TextUtils.equals(message.getText().toString() , "")) {
+                    text.add(message.getText().toString());
+                    direction.add('R');
+                    message_adapter.notifyDataSetChanged();
+
+                    text.add(message.getText().toString());
+                    direction.add('L');
+                    message_adapter.notifyDataSetChanged();
+                    message.setText(null);
+                }
 
             }
         });
@@ -43,7 +53,17 @@ public class chatRoom extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!TextUtils.equals(message.getText().toString() , "")) {
+                    text.add(message.getText().toString());
+                    direction.add('R');
+                    message_adapter.notifyDataSetChanged();
 
+                    text.add(message.getText().toString());
+                    direction.add('L');
+                    message_adapter.notifyDataSetChanged();
+
+                    message.setText(null);
+                }
             }
         });
 

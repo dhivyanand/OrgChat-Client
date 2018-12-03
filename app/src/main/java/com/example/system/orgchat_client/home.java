@@ -22,6 +22,8 @@ public class home extends AppCompatActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0)
+                    startActivity(new Intent(home.this,Profile.class));
                 if (i == 1)
                     startActivity(new Intent(home.this,Announcements.class));
                 if (i == 2)

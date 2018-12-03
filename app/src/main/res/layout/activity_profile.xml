@@ -29,15 +29,16 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/space4" />
 
-    <EditText
-        android:id="@+id/editText4"
+    <TextView
+        android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/space4"
         android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:textAlignment="center"
-        tools:text="...Loading..." />
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="           Name:\n             Dept:\n  Experience:\nRegistration:\n    Few More:"
+        android:textAlignment="textStart"
+        android:textSize="30sp" />
 
 </RelativeLayout>

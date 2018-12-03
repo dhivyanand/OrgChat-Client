@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/send"
-        android:layout_toStartOf="@+id/send"
+        android:layout_toLeftOf="@+id/camera"
+        android:layout_toStartOf="@+id/camera"
         android:ems="10"
         android:hint="Suggestions..."
         android:inputType="textPersonName" />
@@ -34,4 +35,15 @@
         android:background="@color/colorPrimary"
         android:text="Send"
         android:textColor="#FFF" />
+
+    <ImageButton
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/chatView"
+        android:layout_toLeftOf="@+id/send"
+        android:layout_toStartOf="@+id/send"
+        android:background="@color/red"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 </RelativeLayout>
