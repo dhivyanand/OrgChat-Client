@@ -38,4 +38,14 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:textColor="@android:color/holo_green_dark"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="00:00"
+        android:textColor="@android:color/holo_blue_dark"/>
 </RelativeLayout>
