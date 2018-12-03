@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imageButton7"
         android:layout_toLeftOf="@+id/camera"
+        android:layout_toRightOf="@+id/imageButton7"
         android:layout_toStartOf="@+id/camera"
         android:ems="10"
         android:hint="Suggestions..."
@@ -44,6 +46,17 @@
         android:layout_below="@+id/chatView"
         android:layout_toLeftOf="@+id/send"
         android:layout_toStartOf="@+id/send"
-        android:background="@color/red"
+        android:background="@android:color/white"
         app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <ImageButton
+        android:id="@+id/attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chatView"
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/ic_link_round" />
+
 </RelativeLayout>
