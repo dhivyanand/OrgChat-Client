@@ -14,9 +14,7 @@
         android:layout_toRightOf="@+id/icon"
         android:ems="10"
         android:gravity="center"
-        android:inputType="textPersonName"
         android:text="Empty Announcement"
-        android:textAlignment="center"
         android:textSize="18sp" />
 
     <ImageView
@@ -28,4 +26,16 @@
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         app:srcCompat="@mipmap/menu_announcement_foreground" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/title"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="new"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@android:color/holo_green_dark"/>
 </RelativeLayout>
