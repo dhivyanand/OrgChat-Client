@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageButton7"
+        android:layout_toEndOf="@+id/attachment"
         android:layout_toLeftOf="@+id/camera"
-        android:layout_toRightOf="@+id/imageButton7"
+        android:layout_toRightOf="@+id/attachment"
         android:layout_toStartOf="@+id/camera"
         android:ems="10"
         android:hint="Suggestions..."
@@ -57,6 +57,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/chatView"
         android:background="@android:color/transparent"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
         app:srcCompat="@mipmap/ic_link_round" />
 
 </RelativeLayout>

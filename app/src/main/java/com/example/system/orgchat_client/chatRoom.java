@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class chatRoom extends AppCompatActivity {
 
     ArrayList<String> text;
     ArrayList<Character> direction;
+
+    ImageButton camera,attachment;
 
     MessageAdapter message_adapter;
 
@@ -83,6 +86,9 @@ public class chatRoom extends AppCompatActivity {
         chatView = (ListView)findViewById(R.id.chatView);
         message = (EditText)findViewById(R.id.suggestion);
         send = (Button)findViewById(R.id.send);
+
+        camera = (ImageButton)findViewById(R.id.camera);
+        attachment = (ImageButton)findViewById(R.id.attachment);
 
         if(TextUtils.equals(type,"suggestion"))
             suggestion(chatRoom.this);
