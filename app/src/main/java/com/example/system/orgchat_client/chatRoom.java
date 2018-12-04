@@ -38,6 +38,11 @@ public class chatRoom extends AppCompatActivity {
     DisplayMetrics displayMetrics;
     int dpWidth;
 
+    void suggestion_sync(){
+
+    }
+
+
     void saveDB(String message , String message_type , String message_id , Time time , String from , String to){
 
     }
