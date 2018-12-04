@@ -23,21 +23,23 @@ public class chatRoom extends AppCompatActivity {
 
     ListView chatView;
     EditText message;
+    ImageButton camera,attachment;
     Button send;
 
     ArrayList<String> message_data;
     ArrayList<Character> direction;
     ArrayList<Character> message_type;
 
-    ImageButton camera,attachment;
-
     MessageAdapter message_adapter;
 
     String admin_name,type,host_url;
 
     DisplayMetrics displayMetrics;
-
     int dpWidth;
+
+    void request(String host , String message , String message_type){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,9 @@ public class chatRoom extends AppCompatActivity {
         attachment = (ImageButton)findViewById(R.id.attachment);
 
         if(TextUtils.equals(type,"suggestion"))
-        {}
+        {   }
         else if (TextUtils.equals(type,"compliant"))
-        {}
+        {   }
 
         message_data = new ArrayList<String>();
         direction = new ArrayList<Character>();
