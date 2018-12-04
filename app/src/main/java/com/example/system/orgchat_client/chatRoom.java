@@ -53,17 +53,26 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
-    void populate_message_list(String message,Character message_type , String message_id , String time){
+    void populate_message_list(String message,Character message_type , String time){
 
     }
 
     void request(String host , String message , Character message_type , String message_id){
 
+        SimpleDateFormat date,time;
+
+        date = new SimpleDateFormat("dd/MM/yyyy");
+        time = new SimpleDateFormat(" HH:mm:ss");
+
+        Date now = new Date();
+
+        populate_message_list(message , message_type, time.format(now));
+
     }
 
-    int hash_gen(){
+    String hash_gen(){
 
-        return 0;
+        return "hash";
     }
 
     @Override
