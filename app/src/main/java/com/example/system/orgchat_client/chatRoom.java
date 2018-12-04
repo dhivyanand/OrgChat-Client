@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,7 +38,11 @@ public class chatRoom extends AppCompatActivity {
     DisplayMetrics displayMetrics;
     int dpWidth;
 
-    void request(String host , String message , String message_type){
+    void saveDB(String message , String message_type , String message_id , Time time , String from , String to){
+
+    }
+
+    void request(String host , String message , String message_type , String message_id , Time time){
 
     }
 
