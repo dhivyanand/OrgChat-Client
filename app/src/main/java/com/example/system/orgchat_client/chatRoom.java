@@ -53,7 +53,13 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
-    void populate_message_list(String message,Character message_type , String time){
+    void populate_message_list(String message , Character messageType , String messageTime){
+
+        message_data.add(message);
+        message_type.add(messageType);
+        time.add(messageTime);
+        direction.add('R');
+        message_adapter.notifyDataSetChanged();
 
     }
 
@@ -101,12 +107,13 @@ public class chatRoom extends AppCompatActivity {
             compliant_sync();
         }
 
-        message_adapter = new MessageAdapter(chatRoom.this,message_data,direction,type,time);
 
         message_data = new ArrayList<String>();
         time = new ArrayList<String>();
         direction = new ArrayList<Character>();
         message_type = new ArrayList<Character>();
+
+        message_adapter = new MessageAdapter(chatRoom.this,message_data,direction,message_type,time);
 
         chatView.setAdapter(message_adapter);
 

@@ -30,17 +30,15 @@ public class MessageAdapter extends BaseAdapter {
     Context c;
     ArrayList<String> message;
     ArrayList<Character> direction;
-    ArrayList<Bitmap> image;
 
     View root;
     TextView text;
     ImageView imgview;
 
-    MessageAdapter(Context c , ArrayList<String> message , ArrayList<Character> direction , String type , ArrayList<String> time){
+    MessageAdapter(Context c , ArrayList<String> message , ArrayList<Character> direction , ArrayList<Character> type , ArrayList<String> time){
         this.c = c;
         this.message = message;
         this.direction = direction;
-        this.image = image;
 
     }
 
@@ -69,6 +67,6 @@ public class MessageAdapter extends BaseAdapter {
         }else{
 
         }
-        return root;
+        return view;
     }
 }
