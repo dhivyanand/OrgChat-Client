@@ -27,9 +27,8 @@ public class chatRoom extends AppCompatActivity {
     ImageButton camera,attachment;
     Button send;
 
-    ArrayList<String> message_data;
-    ArrayList<Character> direction;
-    ArrayList<Character> message_type;
+    ArrayList<String> message_data,time;
+    ArrayList<Character> direction,message_type;
 
     MessageAdapter message_adapter;
 
@@ -89,8 +88,14 @@ public class chatRoom extends AppCompatActivity {
             compliant_sync();
         }
 
+        message_adapter = new MessageAdapter(chatRoom.this,message_data,direction,type,time);
+
         message_data = new ArrayList<String>();
+        time = new ArrayList<String>();
         direction = new ArrayList<Character>();
+        message_type = new ArrayList<Character>();
+
+        chatView.setAdapter(message_adapter);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
