@@ -42,6 +42,9 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+    void compliant_sync(){
+
+    }
 
     void saveDB(String message , String message_type , String message_id , Time time , String from , String to){
 
