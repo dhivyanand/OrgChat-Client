@@ -77,7 +77,7 @@ public class chatRoom extends AppCompatActivity {
         }
         else if (TextUtils.equals(type,"compliant"))
         {
-
+            compliant_sync();
         }
 
         message_data = new ArrayList<String>();
