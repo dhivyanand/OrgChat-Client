@@ -33,19 +33,11 @@ public class chatRoom extends AppCompatActivity {
 
     MessageAdapter message_adapter;
 
-    String admin_name,type;
+    String admin_name,type,host_url;
 
     DisplayMetrics displayMetrics;
 
     int dpWidth;
-
-    void suggestion(Context c){
-
-    }
-
-    void compliant(Context c){
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +57,9 @@ public class chatRoom extends AppCompatActivity {
         attachment = (ImageButton)findViewById(R.id.attachment);
 
         if(TextUtils.equals(type,"suggestion"))
-            suggestion(chatRoom.this);
+        {}
         else if (TextUtils.equals(type,"compliant"))
-            compliant(chatRoom.this);
+        {}
 
         message_data = new ArrayList<String>();
         direction = new ArrayList<Character>();
