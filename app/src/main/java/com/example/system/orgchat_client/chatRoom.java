@@ -1,19 +1,30 @@
 package com.example.system.orgchat_client;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class chatRoom extends AppCompatActivity {
 
@@ -23,12 +34,17 @@ public class chatRoom extends AppCompatActivity {
 
     ArrayList<String> text;
     ArrayList<Character> direction;
+    ArrayList<Bitmap> image;
 
     ImageButton camera,attachment;
 
     MessageAdapter message_adapter;
 
     String admin_name,type;
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private Bitmap mImageBitmap;
+    private String mCurrentPhotoPath;
 
     void suggestion(Context c){
 
@@ -38,10 +54,12 @@ public class chatRoom extends AppCompatActivity {
                 if(!TextUtils.equals(message.getText().toString() , "")) {
                     text.add(message.getText().toString());
                     direction.add('R');
+                    image.add(null);
                     message_adapter.notifyDataSetChanged();
 
                     text.add(message.getText().toString());
                     direction.add('L');
+                    image.add(null);
                     message_adapter.notifyDataSetChanged();
                     message.setText(null);
                 }
@@ -59,10 +77,12 @@ public class chatRoom extends AppCompatActivity {
                 if(!TextUtils.equals(message.getText().toString() , "")) {
                     text.add(message.getText().toString());
                     direction.add('R');
+                    image.add(null);
                     message_adapter.notifyDataSetChanged();
 
                     text.add(message.getText().toString());
                     direction.add('L');
+                    image.add(null);
                     message_adapter.notifyDataSetChanged();
 
                     message.setText(null);
@@ -70,6 +90,23 @@ public class chatRoom extends AppCompatActivity {
             }
         });
 
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  // prefix
+                ".jpg",         // suffix
+                storageDir      // directory
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
     }
 
     @Override
@@ -97,9 +134,65 @@ public class chatRoom extends AppCompatActivity {
 
         text = new ArrayList<String>();
         direction = new ArrayList<Character>();
+        image = new ArrayList<Bitmap>();
 
-        message_adapter = new MessageAdapter(chatRoom.this,text,direction);
+        message_adapter = new MessageAdapter(chatRoom.this,text,direction,image);
         chatView.setAdapter(message_adapter);
 
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                    File photoFile = null;
+                    try {
+                        photoFile = createImageFile();
+                    } catch (IOException ex) {
+
+                    }
+
+                    if (photoFile != null) {
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                        startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+                    }
+                }
+
+            }
+        });
+
+        attachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            try {
+                mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
+
+                text.add("");
+                direction.add('R');
+                image.add(mImageBitmap);
+
+                message_adapter.notifyDataSetChanged();
+
+                text.add("");
+                direction.add('L');
+                image.add(mImageBitmap);
+
+                message_adapter.notifyDataSetChanged();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
