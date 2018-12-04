@@ -1,10 +1,13 @@
 package com.example.system.orgchat_client;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,17 +33,13 @@ public class MessageAdapter extends BaseAdapter {
     View root;
     TextView text;
     ImageView imgview;
-    DisplayMetrics displayMetrics;
-
-    int dpWidth;
 
     MessageAdapter(Context c , ArrayList<String> message , ArrayList<Character> direction , ArrayList<Bitmap> image){
         this.c = c;
         this.message = message;
         this.direction = direction;
         this.image = image;
-        this.displayMetrics =  c.getResources().getDisplayMetrics();
-        this.dpWidth = displayMetrics.widthPixels;
+
     }
 
     @Override
@@ -58,7 +57,6 @@ public class MessageAdapter extends BaseAdapter {
         return message.size();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
@@ -73,13 +71,11 @@ public class MessageAdapter extends BaseAdapter {
                 try {
                     root = layoutInflater.inflate(R.layout.message_image_left, null);
                     imgview = (ImageView) root.findViewById(R.id.image);
-                    imgview.setImageBitmap(Bitmap.createScaledBitmap(image.get(i), dpWidth * 2 / 4, dpWidth * 2 / 4, true));
-                    imgview.setMinimumWidth(dpWidth * 1 / 4);
-                    imgview.setMaxWidth(dpWidth * 2 / 4);
-                    imgview.setMinimumHeight(dpWidth * 1 / 4);
-                    imgview.setMaxHeight(dpWidth * 2 / 4);
+                    imgview.setImageBitmap(image.get(i));
+
                 }catch(Exception e){
-                    Toast.makeText(c, "Please repeat once again." , Toast.LENGTH_SHORT).show();
+                    return new View(c);
+
                 }
             }
         }else{
@@ -91,13 +87,11 @@ public class MessageAdapter extends BaseAdapter {
                 try {
                     root = layoutInflater.inflate(R.layout.message_image_right, null);
                     imgview = (ImageView) root.findViewById(R.id.image);
-                    imgview.setImageBitmap(Bitmap.createScaledBitmap(image.get(i), dpWidth * 2 / 4, dpWidth * 2 / 4, true));
-                    imgview.setMinimumWidth((int) dpWidth * 2 / 4);
-                    imgview.setMaxWidth((int) dpWidth * 2 / 4);
-                    imgview.setMinimumHeight(dpWidth * 2 / 4);
-                    imgview.setMaxHeight(dpWidth * 2 / 4);
+                    imgview.setImageBitmap(image.get(i));
+
                 }catch(Exception e){
-                    Toast.makeText(c, "Please repeat once again." , Toast.LENGTH_SHORT).show();
+                    return new View(c);
+
                 }
             }
         }

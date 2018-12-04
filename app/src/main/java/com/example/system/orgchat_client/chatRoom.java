@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,10 @@ public class chatRoom extends AppCompatActivity {
     MessageAdapter message_adapter;
 
     String admin_name,type;
+
+    DisplayMetrics displayMetrics;
+
+    int dpWidth;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private Bitmap mImageBitmap;
@@ -127,6 +132,9 @@ public class chatRoom extends AppCompatActivity {
         camera = (ImageButton)findViewById(R.id.camera);
         attachment = (ImageButton)findViewById(R.id.attachment);
 
+        displayMetrics =  getResources().getDisplayMetrics();
+        dpWidth = displayMetrics.widthPixels;
+
         if(TextUtils.equals(type,"suggestion"))
             suggestion(chatRoom.this);
         else if (TextUtils.equals(type,"compliant"))
@@ -176,20 +184,27 @@ public class chatRoom extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             try {
-                mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
+                mImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mCurrentPhotoPath));
 
-                text.add("");
-                direction.add('R');
-                image.add(mImageBitmap);
+                try {
+                    text.add("");
+                    direction.add('R');
+                    image.add(Bitmap.createScaledBitmap(mImageBitmap, dpWidth * 2 / 4, dpWidth * 2 / 4, true));
 
-                message_adapter.notifyDataSetChanged();
+                    message_adapter.notifyDataSetChanged();
+                }catch(Exception e){
 
-                text.add("");
-                direction.add('L');
-                image.add(mImageBitmap);
+                }
 
-                message_adapter.notifyDataSetChanged();
+                try {
+                    text.add("");
+                    direction.add('L');
+                    image.add(Bitmap.createScaledBitmap(mImageBitmap, dpWidth * 2 / 4, dpWidth * 2 / 4, true));
 
+                    message_adapter.notifyDataSetChanged();
+                }catch(Exception e){
+
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
