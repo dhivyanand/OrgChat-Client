@@ -53,6 +53,10 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+    void populate_message_list(String message,Character message_type , String message_id , String time){
+
+    }
+
     void request(String host , String message , Character message_type , String message_id){
 
     }
