@@ -72,9 +72,13 @@ public class chatRoom extends AppCompatActivity {
         attachment = (ImageButton)findViewById(R.id.attachment);
 
         if(TextUtils.equals(type,"suggestion"))
-        {   }
+        {
+            suggestion_sync();
+        }
         else if (TextUtils.equals(type,"compliant"))
-        {   }
+        {
+
+        }
 
         message_data = new ArrayList<String>();
         direction = new ArrayList<Character>();
