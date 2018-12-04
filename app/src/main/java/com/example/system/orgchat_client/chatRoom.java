@@ -54,8 +54,13 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
-    void request(String host , String message , String message_type , String message_id , Time time){
+    void request(String host , String message , Character message_type , String message_id){
 
+    }
+
+    int hash_gen(){
+
+        return 0;
     }
 
     @Override
@@ -104,6 +109,14 @@ public class chatRoom extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String msg = message.getText().toString();
+
+                if(!TextUtils.equals(msg,null)){
+
+                    request(null,msg,'T',String.valueOf(hash_gen()));
+
+                }
 
             }
         });
