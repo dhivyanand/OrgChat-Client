@@ -50,6 +50,10 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+    void fetch_messages(){
+
+    }
+
     void request(String host , String message , String message_type , String message_id , Time time){
 
     }
