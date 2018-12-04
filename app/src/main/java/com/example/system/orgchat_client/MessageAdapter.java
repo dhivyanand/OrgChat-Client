@@ -63,37 +63,9 @@ public class MessageAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if(direction.get(i) == 'L') {
-            if(message.get(i).toString() != "") {
-                root = layoutInflater.inflate(R.layout.chat_message_view_left, null);
-                text = (TextView) root.findViewById(R.id.textView);
-                text.setText(message.get(i).toString());
-            }else{
-                try {
-                    root = layoutInflater.inflate(R.layout.message_image_left, null);
-                    imgview = (ImageView) root.findViewById(R.id.image);
-                    imgview.setImageBitmap(image.get(i));
 
-                }catch(Exception e){
-                    return new View(c);
-
-                }
-            }
         }else{
-            if(message.get(i).toString() != "") {
-                root = layoutInflater.inflate(R.layout.chat_message_view_right, null);
-                text = (TextView) root.findViewById(R.id.textView);
-                text.setText(message.get(i).toString());
-            }else{
-                try {
-                    root = layoutInflater.inflate(R.layout.message_image_right, null);
-                    imgview = (ImageView) root.findViewById(R.id.image);
-                    imgview.setImageBitmap(image.get(i));
 
-                }catch(Exception e){
-                    return new View(c);
-
-                }
-            }
         }
         return root;
     }

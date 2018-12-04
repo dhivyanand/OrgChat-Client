@@ -19,6 +19,7 @@ public class Admin extends AppCompatActivity {
     ArrayList<Bitmap> image;
     ListView list;
     String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

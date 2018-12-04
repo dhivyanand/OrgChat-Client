@@ -151,21 +151,6 @@ public class chatRoom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException ex) {
-
-                    }
-
-                    if (photoFile != null) {
-                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                        startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-                    }
-                }
-
             }
         });
 
@@ -173,41 +158,9 @@ public class chatRoom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
             }
         });
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            try {
-                mImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mCurrentPhotoPath));
-
-                try {
-                    text.add("");
-                    direction.add('R');
-                    image.add(Bitmap.createScaledBitmap(mImageBitmap, dpWidth * 2 / 4, dpWidth * 2 / 4, true));
-
-                    message_adapter.notifyDataSetChanged();
-                }catch(Exception e){
-
-                }
-
-                try {
-                    text.add("");
-                    direction.add('L');
-                    image.add(Bitmap.createScaledBitmap(mImageBitmap, dpWidth * 2 / 4, dpWidth * 2 / 4, true));
-
-                    message_adapter.notifyDataSetChanged();
-                }catch(Exception e){
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
