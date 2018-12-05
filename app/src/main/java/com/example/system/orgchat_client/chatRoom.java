@@ -75,12 +75,12 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
-    void populate_message_list(String message , Character messageType , String messageTime){
+    void populate_message_list(String message , Character messageType , String messageTime , Character message_direction){
 
         message_data.add(message);
         message_type.add(messageType);
         time.add(messageTime);
-        direction.add('R');
+        direction.add(message_direction);
         message_adapter.notifyDataSetChanged();
 
     }
@@ -94,7 +94,7 @@ public class chatRoom extends AppCompatActivity {
 
         Date now = new Date();
 
-        populate_message_list(message , message_type, time.format(now));
+        populate_message_list(message , message_type, time.format(now) , 'R');
 
     }
 
@@ -195,8 +195,6 @@ public class chatRoom extends AppCompatActivity {
                 ContentResolver cr = this.getContentResolver();
                 uri = resultData.getData();
                 String type = cr.getType(uri);
-                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
-
 
             }
 
