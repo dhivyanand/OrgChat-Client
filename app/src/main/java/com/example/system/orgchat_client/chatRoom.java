@@ -114,6 +114,8 @@ public class chatRoom extends AppCompatActivity {
         camera = (ImageButton)findViewById(R.id.camera);
         attachment = (ImageButton)findViewById(R.id.attachment);
 
+        attachment_frame = (FrameLayout)findViewById(R.id.attachment_frame);
+
         if(TextUtils.equals(type,"suggestion"))
         {
             suggestion_sync();
