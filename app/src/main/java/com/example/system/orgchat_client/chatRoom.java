@@ -37,6 +37,10 @@ public class chatRoom extends AppCompatActivity {
     DisplayMetrics displayMetrics;
     int dpWidth;
 
+    void attachment(){
+
+    }
+
     void suggestion_sync(){
 
     }
