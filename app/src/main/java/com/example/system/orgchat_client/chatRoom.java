@@ -41,6 +41,10 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+    void photo(){
+
+    }
+
     void suggestion_sync(){
 
     }
