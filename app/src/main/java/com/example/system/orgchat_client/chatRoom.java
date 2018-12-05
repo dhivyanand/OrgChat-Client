@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,7 +46,7 @@ public class chatRoom extends AppCompatActivity {
     String admin_name,type,host_url;
 
     DisplayMetrics displayMetrics;
-    int dpWidth , READ_REQUEST_CODE=42;
+    int dpWidth , REQUEST_IMAGE_CAPTURE = 1 , READ_REQUEST_CODE=42;
 
     void attachment(){
 
@@ -140,6 +141,11 @@ public class chatRoom extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
 
             }
         });
