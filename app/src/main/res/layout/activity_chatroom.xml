@@ -61,4 +61,15 @@
         android:paddingLeft="5dp"
         app:srcCompat="@mipmap/ic_link_round" />
 
+    <FrameLayout
+        android:id="@+id/attachment_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/suggestion"
+        android:layout_toStartOf="@+id/suggestion">
+
+    </FrameLayout>
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.system.orgchat_client;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,8 +15,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +33,7 @@ public class chatRoom extends AppCompatActivity {
     EditText message;
     ImageButton camera,attachment;
     Button send;
+    FrameLayout attachment_frame;
 
     ArrayList<String> message_data,time;
     ArrayList<Character> direction,message_type;
@@ -175,7 +179,11 @@ public class chatRoom extends AppCompatActivity {
 
             if (resultData != null) {
 
+                ContentResolver cr = this.getContentResolver();
                 uri = resultData.getData();
+                String type = cr.getType(uri);
+                Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+
 
             }
 
