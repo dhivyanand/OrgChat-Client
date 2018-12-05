@@ -54,6 +54,9 @@ public class chatRoom extends AppCompatActivity {
 
     void photo(Bitmap image){
 
+        String img = image.toString();
+        request(null,img,'I',hash_gen());
+
     }
 
     void suggestion_sync(){
