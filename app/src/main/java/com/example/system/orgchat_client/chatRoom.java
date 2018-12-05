@@ -52,7 +52,7 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
-    void photo(){
+    void photo(Bitmap image){
 
     }
 
