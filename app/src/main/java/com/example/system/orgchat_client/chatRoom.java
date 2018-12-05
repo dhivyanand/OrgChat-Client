@@ -1,12 +1,16 @@
 package com.example.system.orgchat_client;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +39,7 @@ public class chatRoom extends AppCompatActivity {
     String admin_name,type,host_url;
 
     DisplayMetrics displayMetrics;
-    int dpWidth;
+    int dpWidth , READ_REQUEST_CODE=42;
 
     void attachment(){
 
@@ -136,6 +140,11 @@ public class chatRoom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(intent, READ_REQUEST_CODE);
+
             }
         });
 
@@ -153,6 +162,24 @@ public class chatRoom extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            Uri uri = null;
+
+            if (resultData != null) {
+
+                uri = resultData.getData();
+
+            }
+
+        }
 
     }
 
