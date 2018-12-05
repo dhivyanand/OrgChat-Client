@@ -205,6 +205,7 @@ public class chatRoom extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = resultData.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            photo(imageBitmap);
         }
 
     }
