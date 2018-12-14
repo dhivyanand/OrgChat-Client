@@ -60,11 +60,14 @@ public class MessageAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
+        char dir = direction.get(i);
         LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if(direction.get(i) == 'L') {
+        if(dir == 'L') {
 
-        }else{
+        } else if(dir == 'R'){
+
+        } else if(dir == 'C'){
 
         }
 
