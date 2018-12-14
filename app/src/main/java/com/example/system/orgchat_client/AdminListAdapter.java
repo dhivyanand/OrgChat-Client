@@ -54,13 +54,12 @@ public class AdminListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View root = layoutInflater.inflate(R.layout.adminlist_adapter,null);
-
         icon = (ImageView)root.findViewById(R.id.image);
         text_name = (TextView)root.findViewById(R.id.name);
         text_notification = (TextView)root.findViewById(R.id.notification);
-
         text_name.setText(name.get(i).toString());
         text_notification.setText(notification.get(i).toString());
+
         if (image.get(i) != null)
             icon.setImageBitmap(image.get(i));
 

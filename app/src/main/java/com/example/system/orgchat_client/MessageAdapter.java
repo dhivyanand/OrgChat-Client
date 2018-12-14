@@ -67,6 +67,7 @@ public class MessageAdapter extends BaseAdapter {
         }else{
 
         }
+
         return view;
     }
 }

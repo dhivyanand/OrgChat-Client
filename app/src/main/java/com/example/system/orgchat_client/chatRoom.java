@@ -88,12 +88,9 @@ public class chatRoom extends AppCompatActivity {
     void request(String host , String message , Character message_type , String message_id){
 
         SimpleDateFormat date,time;
-
         date = new SimpleDateFormat("dd/MM/yyyy");
         time = new SimpleDateFormat(" HH:mm:ss");
-
         Date now = new Date();
-
         populate_message_list(message , message_type, time.format(now) , 'R');
 
     }
@@ -116,10 +113,8 @@ public class chatRoom extends AppCompatActivity {
         chatView = (ListView)findViewById(R.id.chatView);
         message = (EditText)findViewById(R.id.suggestion);
         send = (Button)findViewById(R.id.send);
-
         camera = (ImageButton)findViewById(R.id.camera);
         attachment = (ImageButton)findViewById(R.id.attachment);
-
         attachment_frame = (FrameLayout)findViewById(R.id.attachment_frame);
 
         if(TextUtils.equals(type,"suggestion"))
@@ -131,14 +126,12 @@ public class chatRoom extends AppCompatActivity {
             compliant_sync();
         }
 
-
         message_data = new ArrayList<String>();
         time = new ArrayList<String>();
         direction = new ArrayList<Character>();
         message_type = new ArrayList<Character>();
 
         message_adapter = new MessageAdapter(chatRoom.this,message_data,direction,message_type,time);
-
         chatView.setAdapter(message_adapter);
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +171,7 @@ public class chatRoom extends AppCompatActivity {
                 }
 
             }
+
         });
 
     }
@@ -201,9 +195,11 @@ public class chatRoom extends AppCompatActivity {
         }
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
             Bundle extras = resultData.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             photo(imageBitmap);
+
         }
 
     }
