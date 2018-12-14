@@ -28,7 +28,7 @@
         android:textSize="18sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/status"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignBottom="@+id/textView"
