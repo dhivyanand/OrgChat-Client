@@ -36,6 +36,7 @@ public class MessageAdapter extends BaseAdapter {
     ImageView imgview;
 
     MessageAdapter(Context c , ArrayList<String> message , ArrayList<Character> direction , ArrayList<Character> type , ArrayList<String> time){
+
         this.c = c;
         this.message = message;
         this.direction = direction;

@@ -44,8 +44,8 @@ public class Admin extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
 
+                String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
                 Intent chat = new Intent(Admin.this,chatRoom.class);
                 chat.putExtra("admin_name",name);
                 chat.putExtra("type",type);

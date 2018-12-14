@@ -15,14 +15,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="75dp"
         android:layout_weight="1"
         android:background="@drawable/message_view_right"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp"
-        android:text="TextView"
+        android:text="Text"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:maxHeight="15dp"
+        android:maxWidth="15dp"
+        app:srcCompat="@mipmap/single_tick_round" />
+
 </RelativeLayout>
