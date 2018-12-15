@@ -66,11 +66,27 @@ public class MessageAdapter extends BaseAdapter {
         char dir = direction.get(i);
         LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        char t = type.get(i);
+
         if(dir == 'L') {
 
-            root = layoutInflater.inflate(R.layout.chat_message_view_left,viewGroup);
-            text = (TextView)root.findViewById(R.id.textView);
-            text.setText(message.get(i));
+            if(t == 'T') {
+
+                root = layoutInflater.inflate(R.layout.chat_message_view_left, viewGroup);
+                text = (TextView) root.findViewById(R.id.textView);
+                text.setText(message.get(i));
+
+            } else if(t == 'I'){
+
+                root = layoutInflater.inflate(R.layout.image_left, viewGroup);
+                imgview = (ImageView) root.findViewById(R.id.imageView);
+
+            } else if(t == 'F'){
+
+            } else if(t == 'V'){
+
+            }
+
 
         } else if(dir == 'R'){
 
