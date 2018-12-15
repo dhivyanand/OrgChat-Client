@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by System on 1/12/18.
  */
 
-public class AdminListAdapter extends BaseAdapter {
+public class DepartmentAdapter extends BaseAdapter {
 
     Context c;
     ArrayList<String> name , notification;
@@ -29,7 +29,7 @@ public class AdminListAdapter extends BaseAdapter {
     TextView text_name,text_notification;
 
 
-    AdminListAdapter(Context c , ArrayList<String> name , ArrayList<String> notification , ArrayList<Bitmap> image){
+    DepartmentAdapter(Context c , ArrayList<String> name , ArrayList<String> notification , ArrayList<Bitmap> image){
         this.c = c;
         this.name = name;
         this.notification = notification;

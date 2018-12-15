@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ public class Admin extends AppCompatActivity {
         notification.add("1");
         image.add(((BitmapDrawable)getResources().getDrawable(R.mipmap.ic_launcher)).getBitmap());
 
-        AdminListAdapter adapter = new AdminListAdapter(Admin.this, name , notification , image);
+        DepartmentAdapter adapter = new DepartmentAdapter(Admin.this, name , notification , image);
 
         list.setAdapter(adapter);
 

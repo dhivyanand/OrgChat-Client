@@ -36,6 +36,6 @@
         android:layout_alignStart="@+id/textView"
         android:maxHeight="15dp"
         android:maxWidth="15dp"
-        app:srcCompat="@mipmap/single_tick_round" />
+        app:srcCompat="@mipmap/double_tick_round" />
 
 </RelativeLayout>
