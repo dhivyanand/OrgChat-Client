@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,6 +19,12 @@ public class Department extends AppCompatActivity {
     ArrayList<Bitmap> image;
     ListView list;
     String type;
+
+
+    void sub_department(Context c , String dept , Bitmap img){
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
