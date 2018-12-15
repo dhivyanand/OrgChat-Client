@@ -25,7 +25,8 @@
         <activity android:name=".Announcements" />
         <activity android:name=".chatRoom" />
         <activity android:name=".SubDepartment" />
-        <activity android:name=".Notifications"></activity>
+        <activity android:name=".Notifications" />
+        <activity android:name=".Department"></activity>
     </application>
 
 </manifest>
