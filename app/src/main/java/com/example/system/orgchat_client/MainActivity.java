@@ -30,16 +30,19 @@ public class MainActivity extends AppCompatActivity {
         int i=0;
         String[] perms = {"android.permission.WRITE_EXTERNAL_STORAGE","android.permission.CAMERA"};
 
+        while(i<2) {
             if (ContextCompat.checkSelfPermission(MainActivity.this, perms[i])
                     != PackageManager.PERMISSION_GRANTED) {
 
                 int permsRequestCode = 200;
                 requestPermissions(perms, permsRequestCode);
 
-            }else {
+            } else {
                 startActivity(new Intent(c, home.class));
                 finish();
             }
+            i++;
+        }
 
     }
     @Override

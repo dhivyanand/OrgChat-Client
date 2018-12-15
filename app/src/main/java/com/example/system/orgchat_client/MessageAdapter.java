@@ -28,8 +28,8 @@ import java.util.ArrayList;
 public class MessageAdapter extends BaseAdapter {
 
     Context c;
-    ArrayList<String> message;
-    ArrayList<Character> direction;
+    ArrayList<String> message,time;
+    ArrayList<Character> direction,type;
 
     View root;
     TextView text;
@@ -40,6 +40,8 @@ public class MessageAdapter extends BaseAdapter {
         this.c = c;
         this.message = message;
         this.direction = direction;
+        this.type = type;
+        this.time = time;
 
     }
 
@@ -65,6 +67,10 @@ public class MessageAdapter extends BaseAdapter {
         LayoutInflater layoutInflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if(dir == 'L') {
+
+            root = layoutInflater.inflate(R.layout.chat_message_view_left,viewGroup);
+            text = (TextView)root.findViewById(R.id.textView);
+            text.setText(message.get(i));
 
         } else if(dir == 'R'){
 
