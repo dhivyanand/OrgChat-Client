@@ -24,7 +24,7 @@
         <activity android:name=".Profile" />
         <activity android:name=".Announcements" />
         <activity android:name=".chatRoom" />
-        <activity android:name=".Admin" />
+        <activity android:name=".SubDepartment" />
         <activity android:name=".Notifications"></activity>
     </application>
 

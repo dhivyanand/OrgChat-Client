@@ -27,9 +27,9 @@ public class home extends AppCompatActivity {
                 if (i == 1)
                     startActivity(new Intent(home.this,Announcements.class));
                 if (i == 2)
-                    startActivity(new Intent(home.this,Admin.class).putExtra("type","suggestion"));
+                    startActivity(new Intent(home.this,SubDepartment.class).putExtra("type","suggestion"));
                 if (i == 3)
-                    startActivity(new Intent(home.this,Admin.class).putExtra("type","compliant"));
+                    startActivity(new Intent(home.this,SubDepartment.class).putExtra("type","compliant"));
             }
         });
 
