@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SubDepartment extends AppCompatActivity {
+public class Department extends AppCompatActivity {
 
     ArrayList<String> name,notification;
     ArrayList<Bitmap> image;
@@ -22,7 +22,7 @@ public class SubDepartment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subdepartment);
+        setContentView(R.layout.activity_department);
 
         type = getIntent().getStringExtra("type");
 
@@ -36,7 +36,7 @@ public class SubDepartment extends AppCompatActivity {
         notification.add("1");
         image.add(((BitmapDrawable)getResources().getDrawable(R.mipmap.ic_launcher)).getBitmap());
 
-        DepartmentAdapter adapter = new DepartmentAdapter(SubDepartment.this, name , notification , image);
+        DepartmentAdapter adapter = new DepartmentAdapter(Department.this, name , notification , image);
 
         list.setAdapter(adapter);
 
@@ -45,7 +45,7 @@ public class SubDepartment extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 String name = ((TextView)view.findViewById(R.id.name)).getText().toString();
-                Intent chat = new Intent(SubDepartment.this,chatRoom.class);
+                Intent chat = new Intent(Department.this,chatRoom.class);
                 chat.putExtra("admin_name",name);
                 chat.putExtra("type",type);
                 startActivity(chat);
