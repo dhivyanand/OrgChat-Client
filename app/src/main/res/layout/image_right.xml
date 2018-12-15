@@ -14,6 +14,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@drawable/message_view_right"
+        android:paddingLeft="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
         app:srcCompat="@android:color/transparent" />
 
 </LinearLayout>

@@ -134,6 +134,14 @@ public class chatRoom extends AppCompatActivity {
         message_adapter = new MessageAdapter(chatRoom.this,message_data,direction,message_type,time);
         chatView.setAdapter(message_adapter);
 
+
+        message_data.add("abc");
+        time.add("abc");
+        direction.add('L');
+        message_type.add('I');
+
+        message_adapter.notifyDataSetChanged();
+
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

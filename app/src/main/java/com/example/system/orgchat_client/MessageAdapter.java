@@ -1,17 +1,21 @@
 package com.example.system.orgchat_client;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +39,11 @@ public class MessageAdapter extends BaseAdapter {
     TextView text;
     ImageView imgview;
 
+    int screen_height=0, screen_width=0;
+    WindowManager wm;
+    DisplayMetrics displaymetrics;
+
+
     MessageAdapter(Context c , ArrayList<String> message , ArrayList<Character> direction , ArrayList<Character> type , ArrayList<String> time){
 
         this.c = c;
@@ -43,6 +52,19 @@ public class MessageAdapter extends BaseAdapter {
         this.type = type;
         this.time = time;
 
+    }
+
+    public void img_resize(){
+        wm = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+        displaymetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(displaymetrics);
+        screen_height = displaymetrics.heightPixels;
+        screen_width = displaymetrics.widthPixels;
+
+        imgview.setMinimumWidth(screen_width/2);
+        imgview.setMaxWidth(screen_width/2);
+        imgview.setMinimumHeight(screen_width/2);
+        imgview.setMaxHeight(screen_width/2);
     }
 
     @Override
@@ -60,6 +82,7 @@ public class MessageAdapter extends BaseAdapter {
         return message.size();
     }
 
+    @SuppressLint("NewApi")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
@@ -72,14 +95,17 @@ public class MessageAdapter extends BaseAdapter {
 
             if(t == 'T') {
 
-                root = layoutInflater.inflate(R.layout.chat_message_view_left, viewGroup);
+                root = layoutInflater.inflate(R.layout.chat_message_view_left, null);
                 text = (TextView) root.findViewById(R.id.textView);
                 text.setText(message.get(i));
 
             } else if(t == 'I'){
 
-                root = layoutInflater.inflate(R.layout.image_left, viewGroup);
+                root = layoutInflater.inflate(R.layout.image_left, null);
                 imgview = (ImageView) root.findViewById(R.id.imageView);
+                Bitmap b = BitmapFactory.decodeResource(c.getResources(),R.mipmap.menu_announcement_foreground);
+                imgview.setImageBitmap(b);
+                img_resize();
 
             } else if(t == 'F'){
 
@@ -94,6 +120,7 @@ public class MessageAdapter extends BaseAdapter {
 
         }
 
-        return view;
+        return root;
     }
+
 }
