@@ -105,7 +105,7 @@ public class chatRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatroom);
 
-        admin_name = getIntent().getExtras().getString("admin_name");
+        admin_name = getIntent().getExtras().getString("sub_department");
         type = getIntent().getExtras().getString("type");
 
         getSupportActionBar().setTitle(admin_name);
