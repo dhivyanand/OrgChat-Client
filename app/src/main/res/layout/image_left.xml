@@ -21,12 +21,20 @@
         app:srcCompat="@android:color/transparent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"
         android:layout_alignRight="@+id/imageView"
-        android:text="TextView" />
+        android:background="#33691E"
+        android:lineSpacingExtra="8sp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="2dp"
+        android:text="00:00"
+        android:textColor="#FFF"
+        android:textSize="14sp" />
 
 </RelativeLayout>
