@@ -13,11 +13,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/message_view_left"
+        android:background="@drawable/left_image_bg"
         android:paddingLeft="20dp"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
         app:srcCompat="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="20dp"
+        android:layout_height="10dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:text="TextView" />
 
 </RelativeLayout>

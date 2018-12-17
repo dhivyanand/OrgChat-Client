@@ -140,6 +140,11 @@ public class chatRoom extends AppCompatActivity {
         direction.add('L');
         message_type.add('I');
 
+        message_data.add("abc");
+        time.add("abc");
+        direction.add('R');
+        message_type.add('I');
+
         message_adapter.notifyDataSetChanged();
 
         camera.setOnClickListener(new View.OnClickListener() {

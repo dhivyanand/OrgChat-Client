@@ -103,9 +103,9 @@ public class MessageAdapter extends BaseAdapter {
 
                 root = layoutInflater.inflate(R.layout.image_left, null);
                 imgview = (ImageView) root.findViewById(R.id.imageView);
-                Bitmap b = BitmapFactory.decodeResource(c.getResources(),R.mipmap.menu_announcement_foreground);
-                imgview.setImageBitmap(b);
+                Bitmap b = BitmapFactory.decodeResource(c.getResources(),R.mipmap.double_tick_round);
                 img_resize();
+                imgview.setImageBitmap(Bitmap.createScaledBitmap(b, (screen_width/2)-10, (screen_width/2)-10, false));
 
             } else if(t == 'F'){
 
@@ -115,6 +115,16 @@ public class MessageAdapter extends BaseAdapter {
 
 
         } else if(dir == 'R'){
+
+            if(t == 'T') {
+
+            } else if(t == 'I'){
+
+            } else if(t == 'F'){
+
+            } else if(t == 'V'){
+
+            }
 
         } else if(dir == 'C'){
 
