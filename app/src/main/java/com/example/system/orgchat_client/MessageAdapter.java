@@ -120,6 +120,12 @@ public class MessageAdapter extends BaseAdapter {
 
             } else if(t == 'I'){
 
+                root = layoutInflater.inflate(R.layout.image_right, null);
+                imgview = (ImageView) root.findViewById(R.id.imageView);
+                Bitmap b = BitmapFactory.decodeResource(c.getResources(),R.mipmap.double_tick_round);
+                img_resize();
+                imgview.setImageBitmap(Bitmap.createScaledBitmap(b, (screen_width/2)-10, (screen_width/2)-10, false));
+
             } else if(t == 'F'){
 
             } else if(t == 'V'){
