@@ -37,4 +37,13 @@
         android:textColor="#FFF"
         android:textSize="14sp" />
 
+    <ImageView
+        android:id="@+id/status"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/imageView"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        app:srcCompat="@mipmap/double_tick_round" />
+
 </RelativeLayout>
