@@ -21,4 +21,13 @@
         android:paddingRight="20dp"
         app:srcCompat="@android:color/transparent" />
 
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:text="TextView" />
+
 </RelativeLayout>
