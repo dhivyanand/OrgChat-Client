@@ -138,12 +138,12 @@ public class chatRoom extends AppCompatActivity {
         message_data.add("abc");
         time.add("abc");
         direction.add('L');
-        message_type.add('I');
+        message_type.add('F');
 
         message_data.add("abc");
         time.add("abc");
         direction.add('R');
-        message_type.add('I');
+        message_type.add('F');
 
         message_adapter.notifyDataSetChanged();
 

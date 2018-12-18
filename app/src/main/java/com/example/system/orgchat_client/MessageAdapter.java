@@ -109,6 +109,8 @@ public class MessageAdapter extends BaseAdapter {
 
             } else if(t == 'F'){
 
+                root = layoutInflater.inflate(R.layout.doc_message_left, null);
+
             } else if(t == 'V'){
 
             }
@@ -127,6 +129,9 @@ public class MessageAdapter extends BaseAdapter {
                 imgview.setImageBitmap(Bitmap.createScaledBitmap(b, (screen_width/2)-10, (screen_width/2)-10, false));
 
             } else if(t == 'F'){
+
+                root = layoutInflater.inflate(R.layout.doc_message_right, null);
+
 
             } else if(t == 'V'){
 

@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="75dp"
         android:layout_weight="1"
         android:background="@drawable/message_view_right"
         android:paddingBottom="10dp"
