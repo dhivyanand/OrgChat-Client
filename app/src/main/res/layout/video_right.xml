@@ -38,6 +38,16 @@
         android:textSize="14sp" />
 
     <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:layout_centerInParent="true"
+        android:layout_alignRight="@id/imageView"
+        android:layout_alignLeft="@id/imageView"
+        app:srcCompat="@mipmap/vdeo_play_round" />
+
+    <ImageView
         android:id="@+id/status"
         android:layout_width="20dp"
         android:layout_height="20dp"

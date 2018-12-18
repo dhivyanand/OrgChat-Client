@@ -120,7 +120,7 @@ public class MessageAdapter extends BaseAdapter {
 
             } else if(t == 'I'){
 
-                root = layoutInflater.inflate(R.layout.image_right, null);
+                root = layoutInflater.inflate(R.layout.video_right, null);
                 imgview = (ImageView) root.findViewById(R.id.imageView);
                 Bitmap b = BitmapFactory.decodeResource(c.getResources(),R.mipmap.double_tick_round);
                 img_resize();
