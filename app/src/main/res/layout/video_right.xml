@@ -21,4 +21,20 @@
         android:paddingRight="20dp"
         app:srcCompat="@android:color/transparent" />
 
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:background="#C2185B"
+        android:lineSpacingExtra="8sp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="2dp"
+        android:text="00:00"
+        android:textColor="#FFF"
+        android:textSize="14sp" />
+
 </RelativeLayout>
