@@ -37,6 +37,25 @@
         android:textColor="#FFF"
         android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/elapse_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignTop="@+id/imageView"
+        android:background="#55000000"
+        android:lineSpacingExtra="8sp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="2dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="7dp"
+        android:text="00:00"
+        android:textAlignment="center"
+        android:textColor="#FFF"
+        android:textSize="12sp" />
+
     <ImageView
         android:id="@+id/play"
         android:layout_width="wrap_content"
