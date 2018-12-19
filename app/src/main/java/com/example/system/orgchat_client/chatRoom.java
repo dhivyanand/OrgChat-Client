@@ -158,7 +158,8 @@ public class chatRoom extends AppCompatActivity {
         chatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(actionBar, actionBarMenu);
             }
         });
 
