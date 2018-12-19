@@ -18,7 +18,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:paddingTop="22dp"
-        android:text="TextView"
+        android:text="📁TextView"
         android:textColor="#FFF"
         android:textSize="18sp" />
 
