@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -49,7 +51,8 @@ public class chatRoom extends AppCompatActivity {
     String admin_name,type,host_url;
 
     DisplayMetrics displayMetrics;
-    int dpWidth , REQUEST_IMAGE_CAPTURE = 1 , READ_REQUEST_CODE=42;
+    int dpWidth , REQUEST_IMAGE_CAPTURE = 1 , READ_REQUEST_CODE=42 , actionBar = R.menu.action_bar_menu;
+    Menu actionBarMenu;
 
     void attachment(){
 
@@ -112,6 +115,7 @@ public class chatRoom extends AppCompatActivity {
         type = getIntent().getExtras().getString("type");
 
         getSupportActionBar().setTitle(admin_name);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE|ActionBar.DISPLAY_SHOW_CUSTOM|ActionBar.DISPLAY_USE_LOGO);
 
         chatView = (ListView)findViewById(R.id.chatView);
         message = (EditText)findViewById(R.id.suggestion);
@@ -223,9 +227,9 @@ public class chatRoom extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(MENU, menu);
-
-        return super.onCreateOptionsMenu(menu);
+        inflater.inflate(actionBar, menu);
+        actionBarMenu = menu;
+        return true;
     }
 
 }
