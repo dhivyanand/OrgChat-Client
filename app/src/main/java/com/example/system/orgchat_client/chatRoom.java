@@ -26,6 +26,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -153,6 +154,13 @@ public class chatRoom extends AppCompatActivity {
         message_type.add('F');
 
         message_adapter.notifyDataSetChanged();
+
+        chatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
