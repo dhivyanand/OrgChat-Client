@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -246,13 +247,22 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(actionBar, menu);
+        actionBarMenu = menu;
+        return true;
+    }
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         if (v.getId()==R.id.chatView) {
             MenuInflater inflater = getMenuInflater();
-            inflater.inflate(actionBar, menu);
+            onCreateOptionsMenu(actionBarMenu);
+
         }
     }
 
@@ -267,5 +277,37 @@ public class chatRoom extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
+    class ActionBarCallBack implements ActionMode.Callback {
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            // TODO Auto-generated method stub
+            return false;
+        }
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            // TODO Auto-generated method stub
+            mode.getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+            return true;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            // TODO Auto-generated method stub
+
+            mode.setTitle("CheckBox is Checked");
+            return false;
+        }
+    }
+
+
 
 }
