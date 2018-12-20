@@ -153,13 +153,35 @@ public class chatRoom extends AppCompatActivity {
         direction.add('R');
         message_type.add('F');
 
+        message_data.add("abc");
+        time.add("abc");
+        direction.add('L');
+        message_type.add('I');
+
+        message_data.add("abc");
+        time.add("abc");
+        direction.add('R');
+        message_type.add('I');
+
+
+
         message_adapter.notifyDataSetChanged();
 
         chatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                MenuInflater inflater = getMenuInflater();
-                inflater.inflate(actionBar, actionBarMenu);
+
+            }
+        });
+
+        chatView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                actionBar =R.menu.new_menu;
+                onCreateOptionsMenu(actionBarMenu);
+
+                return true;
             }
         });
 
