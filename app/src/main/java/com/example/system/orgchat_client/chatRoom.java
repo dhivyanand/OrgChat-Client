@@ -16,8 +16,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -174,17 +176,6 @@ public class chatRoom extends AppCompatActivity {
             }
         });
 
-        chatView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
-                actionBar =R.menu.new_menu;
-                onCreateOptionsMenu(actionBarMenu);
-
-                return true;
-            }
-        });
-
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,12 +246,26 @@ public class chatRoom extends AppCompatActivity {
 
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(actionBar, menu);
-        actionBarMenu = menu;
-        return true;
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.chatView) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(actionBar, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch(item.getItemId()) {
+            case R.id.add:
+                // add stuff here
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
 }
