@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -170,11 +171,50 @@ public class chatRoom extends AppCompatActivity {
 
         registerForContextMenu(chatView);
 
+        chatView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+
+        chatView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(android.view.ActionMode actionMode, int i, long l, boolean b) {
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(android.view.ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(android.view.ActionMode actionMode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(android.view.ActionMode actionMode, MenuItem menuItem) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(android.view.ActionMode actionMode) {
+
+            }
+        });
+
         chatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
+        });
+
+        chatView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                return false;
+            }
+
+
         });
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -277,37 +317,6 @@ public class chatRoom extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
-
-    class ActionBarCallBack implements ActionMode.Callback {
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            // TODO Auto-generated method stub
-            return false;
-        }
-
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            // TODO Auto-generated method stub
-            mode.getMenuInflater().inflate(R.menu.action_bar_menu, menu);
-            return true;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            // TODO Auto-generated method stub
-
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            // TODO Auto-generated method stub
-
-            mode.setTitle("CheckBox is Checked");
-            return false;
-        }
-    }
-
 
 
 }
