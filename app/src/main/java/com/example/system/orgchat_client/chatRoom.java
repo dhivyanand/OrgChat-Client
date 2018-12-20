@@ -163,9 +163,9 @@ public class chatRoom extends AppCompatActivity {
         direction.add('R');
         message_type.add('I');
 
-
-
         message_adapter.notifyDataSetChanged();
+
+        registerForContextMenu(chatView);
 
         chatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
