@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(perms, permsRequestCode);
 
             } else {
-                startActivity(new Intent(c, home.class));
+
                 finish();
             }
             i++;
@@ -54,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
         if( a==false || b == false)
             ((AppCompatActivity)c).finish();
         else
-            startActivity(new Intent(c, home.class));
+            startActivity(new Intent(c, MainActivity.class));
             finish();
 
     }
+
 }

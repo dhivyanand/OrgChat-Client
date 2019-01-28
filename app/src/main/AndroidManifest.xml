@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +27,9 @@
         <activity android:name=".chatRoom" />
         <activity android:name=".Department" />
         <activity android:name=".Notifications" />
-        <activity android:name=".Department"></activity>
+        <activity android:name=".Department" />
+        <activity android:name=".MailMessage" />
+        <activity android:name=".sendMessage"></activity>
     </application>
 
 </manifest>
