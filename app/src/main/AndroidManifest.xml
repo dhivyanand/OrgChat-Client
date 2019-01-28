@@ -29,7 +29,11 @@
         <activity android:name=".Notifications" />
         <activity android:name=".Department" />
         <activity android:name=".MailMessage" />
-        <activity android:name=".sendMessage"></activity>
+        <activity android:name=".sendMessage" />
+        <activity
+            android:name=".HomeNav"
+            android:label="@string/title_activity_home_nav"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
