@@ -33,6 +33,10 @@
         <activity
             android:name=".HomeNav"
             android:label="@string/title_activity_home_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PostActivity"
+            android:label="@string/title_activity_post"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
