@@ -1,10 +1,12 @@
-package com.example.system.orgchat_client;
+package com.example.system.orgchat_client.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.system.orgchat_client.R;
 
 public class Login extends AppCompatActivity {
 
