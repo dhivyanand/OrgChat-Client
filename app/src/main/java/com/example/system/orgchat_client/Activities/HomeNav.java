@@ -16,10 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.system.orgchat_client.Fragments.PostFragment;
 import com.example.system.orgchat_client.R;
 
 public class HomeNav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    public void setActionBarTitle(String title){
+
+        getSupportActionBar().setTitle(title);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +89,8 @@ public class HomeNav extends AppCompatActivity
         if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_post) {
+
+            fragment = new PostFragment();
 
         } else if (id == R.id.nav_circular) {
 
