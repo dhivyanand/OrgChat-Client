@@ -16,7 +16,6 @@ public class CreateDatabaseUsingHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(DatabaseFunctions.createDepartmentTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createSubDepartmentTable());
-        sqLiteDatabase.execSQL(DatabaseFunctions.createUserTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createMessageTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createCircularTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createAttachmentTable());
@@ -29,7 +28,6 @@ public class CreateDatabaseUsingHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("DROP TABLE DEPARTMENT");
         sqLiteDatabase.execSQL("DROP TABLE SUBDEPARTMENT");
-        sqLiteDatabase.execSQL("DROP TABLE USER");
         sqLiteDatabase.execSQL("DROP TABLE MESSAGE");
         sqLiteDatabase.execSQL("DROP TABLE CIRCULAR");
         sqLiteDatabase.execSQL("DROP TABLE ATTACHMENT");

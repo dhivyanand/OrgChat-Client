@@ -6,12 +6,15 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,7 +22,7 @@ import com.example.system.orgchat_client.Activities.HomeNav;
 import com.example.system.orgchat_client.Adapters.SwipeAdapter;
 import com.example.system.orgchat_client.R;
 
-public class PostFragment extends Fragment {
+public class PostFragment extends Fragment implements ActionBar.TabListener {
 
     ActionBar actionBar;
     SwipeAdapter swipeAdapter;
@@ -91,4 +94,18 @@ public class PostFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
 }
