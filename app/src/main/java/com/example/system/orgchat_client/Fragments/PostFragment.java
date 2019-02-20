@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.system.orgchat_client.Activities.HomeNav;
 import com.example.system.orgchat_client.R;
 
 public class PostFragment extends Fragment {
@@ -26,6 +27,9 @@ public class PostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_post, container, false);
+
+        ((HomeNav)getActivity()).setActionBarTitle("Post");
+
 
         return root;
     }

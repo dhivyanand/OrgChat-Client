@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client.Activities;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -48,6 +49,10 @@ public class HomeNav extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
+        FragmentManager fm = getFragmentManager();
+        fm.popBackStackImmediate();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
