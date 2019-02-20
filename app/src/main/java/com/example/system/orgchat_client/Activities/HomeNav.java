@@ -95,7 +95,7 @@ public class HomeNav extends AppCompatActivity
 
         } else if (id == R.id.nav_post) {
 
-            fragment = new PostFragment();
+            fragment = new PostFragment(getApplicationContext(), getSupportActionBar());
 
         } else if (id == R.id.nav_circular) {
 

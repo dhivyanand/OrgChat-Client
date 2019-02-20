@@ -9,8 +9,15 @@ import com.example.system.orgchat_client.Fragments.SuggestionSwipeFragment;
 
 public class SwipeAdapter extends FragmentPagerAdapter {
 
+    private String[] tabTitles = new String[]{"Suggestion", "Compliant"};
+
     public SwipeAdapter(FragmentManager fm){
         super(fm);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
     }
 
     @Override

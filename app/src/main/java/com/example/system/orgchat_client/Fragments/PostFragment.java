@@ -1,9 +1,14 @@
 package com.example.system.orgchat_client.Fragments;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -19,11 +24,21 @@ public class PostFragment extends Fragment {
     ActionBar actionBar;
     SwipeAdapter swipeAdapter;
     ViewPager pager;
+    TabLayout tab;
+    Context c;
 
     String tabs[] = {"Suggestion" , "Compliant"};
 
     public PostFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public PostFragment(Context c, ActionBar actionBar) {
+
+        this.c = c;
+        this.actionBar = actionBar;
+
     }
 
     @Override
@@ -39,25 +54,28 @@ public class PostFragment extends Fragment {
 
         ((HomeNav)getActivity()).setActionBarTitle("Post");
 
-        actionBar = ((HomeNav) getActivity()).getSupportActionBar();
+        //actionBar = ((HomeNav) getActivity()).getSupportActionBar();
         swipeAdapter = new SwipeAdapter(getFragmentManager());
-        //pager = (ViewPager)root.findViewById(R.id.viewPager);
+        pager = (ViewPager)root.findViewById(R.id.view_pager);
+        tab = (TabLayout)root.findViewById(R.id.tabLayout);
 
         pager.setAdapter(swipeAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        //tab.setHomeButtonEnabled(false);
+        tab.setupWithViewPager(pager);
 
-        for (String tab_name : tabs) {
+
+
+        /*for (String tab_name : tabs) {
             actionBar.addTab(actionBar.newTab().setText(tab_name)
-                    .setTabListener((ActionBar.TabListener) getActivity()));
+                    .setTabListener((ActionBar.TabListener) c.getApplicationContext()));
 
-        }
+        }*/
 
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
+                //actionBar.setSelectedNavigationItem(position);
             }
 
             @Override
