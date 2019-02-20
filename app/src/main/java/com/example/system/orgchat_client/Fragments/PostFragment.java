@@ -39,6 +39,36 @@ public class PostFragment extends Fragment {
 
         ((HomeNav)getActivity()).setActionBarTitle("Post");
 
+        actionBar = ((HomeNav) getActivity()).getSupportActionBar();
+        swipeAdapter = new SwipeAdapter(getFragmentManager());
+        //pager = (ViewPager)root.findViewById(R.id.viewPager);
+
+        pager.setAdapter(swipeAdapter);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name)
+                    .setTabListener((ActionBar.TabListener) getActivity()));
+
+        }
+
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+
 
         return root;
     }
