@@ -11,8 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.system.orgchat_client.Constant;
 import com.example.system.orgchat_client.Database.CreateDatabaseUsingHelper;
+import com.example.system.orgchat_client.Network.APIRequest;
 import com.example.system.orgchat_client.R;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
@@ -21,7 +28,29 @@ public class Login extends AppCompatActivity {
 
     boolean verify_user(String uname , String pass){
 
-        return true;
+        Map<String,String> req = new HashMap<String,String>();
+        req.put("id",uname);
+        req.put("password",pass);
+
+        String res = APIRequest.processRequest(req, Constant.root_URL+"userLogin.php",getApplicationContext());
+
+        JSONObject obj = null;
+
+        try {
+
+            obj = new JSONObject(res);
+
+            String result = (String)obj.get("result");
+
+            if(result.equals("TRUE"))
+                return true;
+            else
+                return false;
+
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     private boolean create_local_database(){

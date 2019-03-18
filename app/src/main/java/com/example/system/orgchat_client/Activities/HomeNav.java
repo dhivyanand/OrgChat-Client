@@ -1,7 +1,11 @@
 package com.example.system.orgchat_client.Activities;
 
+import android.app.ActivityManager;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,8 +21,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.system.orgchat_client.Fragments.CircularFragment;
 import com.example.system.orgchat_client.Fragments.PostFragment;
 import com.example.system.orgchat_client.R;
+import com.example.system.orgchat_client.Services.ApplicationBackgroundService;
 
 public class HomeNav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +33,39 @@ public class HomeNav extends AppCompatActivity
     public void setActionBarTitle(String title){
 
         getSupportActionBar().setTitle(title);
+
+    }
+
+    public static boolean isMyServiceRunning(Class<?> serviceClass,Context c) {
+        ActivityManager manager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isOnline(Context context) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            //should check null because in airplane mode it will be null
+            return (netInfo != null && netInfo.isConnected());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void start_bg_service(){
+
+        if (isOnline(getApplicationContext()) && !isMyServiceRunning(ApplicationBackgroundService.class, getApplicationContext())) {
+
+            Intent appBgSer = new Intent(getApplicationContext(),ApplicationBackgroundService.class);
+            startService(appBgSer);
+
+        }
 
     }
 
@@ -45,6 +84,21 @@ public class HomeNav extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Thread t = new Thread(){
+            @Override
+            public void run(){
+
+                start_bg_service();
+
+            }
+
+        };
+
+        t.start();
+
+        //start_bg_service();
+
     }
 
     @Override
@@ -98,6 +152,8 @@ public class HomeNav extends AppCompatActivity
             fragment = new PostFragment(getApplicationContext(), getSupportActionBar());
 
         } else if (id == R.id.nav_circular) {
+
+            fragment = new CircularFragment();
 
         } else if (id == R.id.nav_link) {
 

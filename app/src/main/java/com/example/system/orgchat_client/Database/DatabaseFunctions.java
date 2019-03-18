@@ -24,7 +24,12 @@ public class DatabaseFunctions {
 
     public static String createCircularTable(){
 
-        return "CREATE TABLE CIRCULAR (CIRCULAR_ID VARCHAR , TITLE VARCHAR , MESSAGE VARCHAR , DATE VARCHAR , TIME VARCHAR)";
+        return "CREATE TABLE CIRCULAR (CIRCULAR_ID VARCHAR , TITLE VARCHAR , MESSAGE VARCHAR , TIME VARCHAR)";
+    }
+
+    public static String createFileTable(){
+
+        return "CREATE TABLE FILE (MESSAGE_ID VARCHAR , NAME VARCHAR , LOCATION VARCHAR)";
     }
 
     public static String createDateTable(){

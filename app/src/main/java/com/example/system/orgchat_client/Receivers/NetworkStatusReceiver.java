@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client.Receivers;
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,18 +12,32 @@ import com.example.system.orgchat_client.Services.ApplicationBackgroundService;
 
 public class NetworkStatusReceiver extends BroadcastReceiver {
 
+    public static boolean isMyServiceRunning(Class<?> serviceClass,Context c) {
+        ActivityManager manager = (ActivityManager) c.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         try
         {
-            if (isOnline(context)) {
+            Intent appBgSer = new Intent(context,ApplicationBackgroundService.class);
 
-                Intent i = new Intent(context,ApplicationBackgroundService.class);
-                context.startService(i);
+            if (isOnline(context) && !isMyServiceRunning(ApplicationBackgroundService.class, context)) {
+
+                context.startService(appBgSer);
 
             } else {
 
+                context.stopService(appBgSer);
+
             }
+
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

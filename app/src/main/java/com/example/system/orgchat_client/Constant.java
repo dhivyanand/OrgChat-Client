@@ -6,7 +6,7 @@ package com.example.system.orgchat_client;
 
 public class Constant {
 
-    static String userid , password;
+    public static String userid , password, root_URL="https://ide50-dhivianand998.legacy.cs50.io:8080/Org_chat_Server/scripts/";
 
 
 }
