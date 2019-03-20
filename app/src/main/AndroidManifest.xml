@@ -43,7 +43,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Activities.CircularActivity"></activity>
+        <activity android:name=".Activities.CircularActivity" />
+        <activity android:name=".Activities.NewCompliant"></activity>
     </application>
 
 </manifest>
