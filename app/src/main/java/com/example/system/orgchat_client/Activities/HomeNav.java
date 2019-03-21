@@ -143,16 +143,18 @@ public class HomeNav extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment = null;
+        Fragment fragment = null, prev_frag=null;
 
         if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_post) {
 
+            prev_frag = fragment;
             fragment = new PostFragment(getApplicationContext(), getSupportActionBar());
 
         } else if (id == R.id.nav_circular) {
 
+            prev_frag = fragment;
             fragment = new CircularFragment();
 
         } else if (id == R.id.nav_link) {
@@ -163,6 +165,10 @@ public class HomeNav extends AppCompatActivity
 
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+            if(prev_frag != null)
+                transaction.remove(prev_frag);
+
             transaction.replace(R.id.home_frame, fragment);
             transaction.commit();
         }

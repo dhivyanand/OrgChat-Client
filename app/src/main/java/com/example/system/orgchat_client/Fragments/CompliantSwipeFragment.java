@@ -1,6 +1,9 @@
 package com.example.system.orgchat_client.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,18 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.system.orgchat_client.Activities.NewCompliant;
+import com.example.system.orgchat_client.Adapters.CircularListAdapter;
 import com.example.system.orgchat_client.Constant;
 import com.example.system.orgchat_client.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class CompliantSwipeFragment extends Fragment {
 
@@ -40,51 +49,48 @@ public class CompliantSwipeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_compliant_swipe, container, false);
 
-        final EditText et = (EditText)root.findViewById(R.id.editText);
+        Button newcompliant = (Button)root.findViewById(R.id.newcompliant);
+        ListView list = (ListView)root.findViewById(R.id.list);
 
-        Button bt = (Button)root.findViewById(R.id.button2);
+        ArrayList<String> compliant,date;
+        compliant = new ArrayList<String>();
+        date = new ArrayList<String>();
 
-        bt.setOnClickListener(new View.OnClickListener() {
+        CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date);
+
+        list.setAdapter(adapter);
+
+        newcompliant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                try {
-                    RequestQueue queue = Volley.newRequestQueue(getContext());
-                    StringRequest sr = new StringRequest(com.android.volley.Request.Method.POST,"https://ide50-dhivianand998.legacy.cs50.io:8080/Org_chat_Server/scripts/addSuggestionData.php", new com.android.volley.Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                        }
-                    }, new com.android.volley.Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                        }
-                    }){
-                        @Override
-                        protected Map<String,String> getParams(){
-                            Map<String,String> params = new HashMap<String, String>();
-                            params.put("data",et.getText().toString());
-                            params.put("type","c");
-
-
-                            return params;
-                        }
-
-                        @Override
-                        public Map<String, String> getHeaders() throws AuthFailureError {
-                            Map<String,String> params = new HashMap<String, String>();
-                            params.put("Content-Type","application/x-www-form-urlencoded");
-                            return params;
-                        }
-                    };
-                    queue.add(sr);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                startActivity(new Intent(getContext(), NewCompliant.class));
             }
         });
 
+        try{
 
+            SQLiteDatabase mydatabase = getContext().openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
+
+            Cursor resultSet = mydatabase.rawQuery("Select TITLE, DATE from MESSAGE where MESSAGE_TYPE = 'C' ",null);
+
+            if(resultSet.moveToFirst()) {
+
+                do {
+
+                    compliant.add(resultSet.getString(0));
+                    date.add(resultSet.getString(1));
+
+                    adapter.notifyDataSetChanged();
+
+                } while (resultSet.moveToNext());
+
+            }
+
+            resultSet.close();
+
+        }catch (Exception e){
+
+        }
 
         return root;
     }

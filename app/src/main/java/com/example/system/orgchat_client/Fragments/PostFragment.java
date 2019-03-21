@@ -2,6 +2,7 @@ package com.example.system.orgchat_client.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
@@ -54,6 +55,9 @@ public class PostFragment extends Fragment implements ActionBar.TabListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        getActivity().getFragmentManager().popBackStack();
+
         View root = inflater.inflate(R.layout.fragment_post, container, false);
 
         ((HomeNav)getActivity()).setActionBarTitle("Post");
@@ -75,21 +79,7 @@ public class PostFragment extends Fragment implements ActionBar.TabListener {
 
         }*/
 
-        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                //actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
 
 
         return root;
