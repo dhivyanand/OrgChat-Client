@@ -41,18 +41,18 @@
         android:layout_above="@+id/post"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/space14"
+        android:layout_below="@+id/space17"
+        android:background="@drawable/description_bg"
         android:ems="10"
         android:gravity="top"
         android:hint="Description"
         android:inputType="textMultiLine"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:background="@drawable/description_bg"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <Space
         android:id="@+id/space14"
@@ -105,5 +105,39 @@
         android:layout_centerHorizontal="true"
         android:elevation="10dp"
         android:text="Attachments" />
+
+    <Spinner
+        android:id="@+id/dept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space14"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/dept"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space16" />
+
+    <Spinner
+        android:id="@+id/subdept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space16"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/subdept"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space17" />
 
 </RelativeLayout>

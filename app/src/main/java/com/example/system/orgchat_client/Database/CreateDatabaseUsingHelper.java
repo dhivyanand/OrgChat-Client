@@ -14,6 +14,7 @@ public class CreateDatabaseUsingHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        sqLiteDatabase.execSQL(DatabaseFunctions.createUserTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createDepartmentTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createSubDepartmentTable());
         sqLiteDatabase.execSQL(DatabaseFunctions.createMessageTable());
@@ -27,6 +28,7 @@ public class CreateDatabaseUsingHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+        sqLiteDatabase.execSQL("DROP TABLE USER");
         sqLiteDatabase.execSQL("DROP TABLE DEPARTMENT");
         sqLiteDatabase.execSQL("DROP TABLE SUBDEPARTMENT");
         sqLiteDatabase.execSQL("DROP TABLE MESSAGE");

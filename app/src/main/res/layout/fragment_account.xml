@@ -1,12 +1,133 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.system.orgchat_client.Fragments.AccountFragment">
 
+    <Space
+        android:id="@+id/space5"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dp" />
+
+    <ImageView
+        android:id="@+id/dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/space6"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_profile" />
+
     <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@+id/space5"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/description_bg"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space6" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space7" />
+
+    <TextView
+        android:id="@+id/reg"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space7"
+        android:background="@drawable/description_bg"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Registration"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/reg"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space8" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/dept"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space9" />
+
+    <Space
+        android:id="@+id/space10"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space15"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/description_bg"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Address"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
-</FrameLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space13" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space8"
+        android:background="@drawable/description_bg"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/phone"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space15" />
+
+</RelativeLayout>

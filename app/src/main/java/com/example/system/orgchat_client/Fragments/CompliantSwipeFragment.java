@@ -10,15 +10,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.system.orgchat_client.Activities.CompliantActivity;
 import com.example.system.orgchat_client.Activities.NewCompliant;
 import com.example.system.orgchat_client.Adapters.CircularListAdapter;
 import com.example.system.orgchat_client.Constant;
@@ -47,10 +50,14 @@ public class CompliantSwipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_compliant_swipe, container, false);
+        View roots = inflater.inflate(R.layout.fragment_compliant_swipe, container, false);
 
-        Button newcompliant = (Button)root.findViewById(R.id.newcompliant);
-        ListView list = (ListView)root.findViewById(R.id.list);
+        Constant.b = getActivity().getSupportFragmentManager().findFragmentById(getId());
+
+        Toast.makeText(getContext(), "Compliant Fragment", Toast.LENGTH_SHORT).show();
+
+        Button newcompliant = (Button)roots.findViewById(R.id.newcompliant);
+        ListView list = (ListView)roots.findViewById(R.id.list);
 
         ArrayList<String> compliant,date;
         compliant = new ArrayList<String>();
@@ -64,6 +71,15 @@ public class CompliantSwipeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), NewCompliant.class));
+            }
+        });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                startActivity(new Intent(getContext(), CompliantActivity.class));
+
             }
         });
 
@@ -92,7 +108,9 @@ public class CompliantSwipeFragment extends Fragment {
 
         }
 
-        return root;
+        return roots;
     }
+
+
 
 }

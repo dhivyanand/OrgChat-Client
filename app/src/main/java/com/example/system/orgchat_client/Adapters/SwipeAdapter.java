@@ -31,7 +31,7 @@ public class SwipeAdapter extends FragmentPagerAdapter {
                 return new CompliantSwipeFragment();
 
         }
-        return null;
+        return new SuggestionSwipeFragment();
     }
 
     @Override

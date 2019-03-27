@@ -14,10 +14,10 @@
         android:text="New" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/lists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/newcompliant"
+        android:layout_above="@+id/newsuggestion"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

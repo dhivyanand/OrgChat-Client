@@ -22,7 +22,10 @@ import android.view.ViewGroup;
 
 import com.example.system.orgchat_client.Activities.HomeNav;
 import com.example.system.orgchat_client.Adapters.SwipeAdapter;
+import com.example.system.orgchat_client.Constant;
 import com.example.system.orgchat_client.R;
+
+import static com.example.system.orgchat_client.Constant.a;
 
 public class PostFragment extends Fragment implements ActionBar.TabListener {
 
@@ -56,20 +59,25 @@ public class PostFragment extends Fragment implements ActionBar.TabListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        getActivity().getFragmentManager().popBackStack();
 
         View root = inflater.inflate(R.layout.fragment_post, container, false);
 
         ((HomeNav)getActivity()).setActionBarTitle("Post");
 
+        if(Constant.a != null){
+            getActivity().getSupportFragmentManager().beginTransaction().remove(Constant.a).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().remove(Constant.b).commit();
+        }
+
         //actionBar = ((HomeNav) getActivity()).getSupportActionBar();
-        swipeAdapter = new SwipeAdapter(getFragmentManager());
+        swipeAdapter = new SwipeAdapter(getActivity().getSupportFragmentManager());
         pager = (ViewPager)root.findViewById(R.id.view_pager);
         tab = (TabLayout)root.findViewById(R.id.tabLayout);
 
         pager.setAdapter(swipeAdapter);
-        //tab.setHomeButtonEnabled(false);
         tab.setupWithViewPager(pager);
+
+        //tab.setHomeButtonEnabled(false);
 
 
 
@@ -78,9 +86,6 @@ public class PostFragment extends Fragment implements ActionBar.TabListener {
                     .setTabListener((ActionBar.TabListener) c.getApplicationContext()));
 
         }*/
-
-
-
 
         return root;
     }
@@ -99,4 +104,5 @@ public class PostFragment extends Fragment implements ActionBar.TabListener {
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
     }
+
 }

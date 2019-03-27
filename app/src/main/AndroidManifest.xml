@@ -45,7 +45,8 @@
 
         <activity android:name=".Activities.CircularActivity" />
         <activity android:name=".Activities.NewCompliant" />
-        <activity android:name=".Activities.NewSuggestion"></activity>
+        <activity android:name=".Activities.NewSuggestion" />
+        <activity android:name=".Activities.CompliantActivity"></activity>
     </application>
 
 </manifest>

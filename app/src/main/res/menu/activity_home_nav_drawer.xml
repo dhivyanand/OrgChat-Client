@@ -24,7 +24,7 @@
             <item
                 android:id="@+id/nav_link"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Link" />
+                android:title="EPF India" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"

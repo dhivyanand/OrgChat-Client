@@ -4,8 +4,11 @@ import android.app.ActivityManager;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,9 +23,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.system.orgchat_client.Database.CreateDatabaseUsingHelper;
+import com.example.system.orgchat_client.Fragments.AccountFragment;
 import com.example.system.orgchat_client.Fragments.CircularFragment;
 import com.example.system.orgchat_client.Fragments.PostFragment;
+import com.example.system.orgchat_client.Fragments.SubDeptFragment;
 import com.example.system.orgchat_client.R;
 import com.example.system.orgchat_client.Services.ApplicationBackgroundService;
 
@@ -66,6 +73,46 @@ public class HomeNav extends AppCompatActivity
             startService(appBgSer);
 
         }
+
+    }
+
+    public void logout(){
+        finish();
+
+        SharedPreferences sharedpreferences = getSharedPreferences("AppSession", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("status", "nil");
+        editor.putString("user", "nil");
+        editor.putString("password", "nil");
+        editor.commit();
+
+        SQLiteDatabase sqLiteDatabase = openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
+
+        sqLiteDatabase.execSQL("DROP TABLE USER");
+        sqLiteDatabase.execSQL("DROP TABLE DEPARTMENT");
+        sqLiteDatabase.execSQL("DROP TABLE SUBDEPARTMENT");
+        sqLiteDatabase.execSQL("DROP TABLE MESSAGE");
+        sqLiteDatabase.execSQL("DROP TABLE CIRCULAR");
+        sqLiteDatabase.execSQL("DROP TABLE ATTACHMENT");
+        sqLiteDatabase.execSQL("DROP TABLE FILE");
+        sqLiteDatabase.execSQL("DROP TABLE DATE");
+
+        startActivity(new Intent(HomeNav.this,MainActivity.class));
+    }
+
+    public String getUserID(){
+
+        SharedPreferences sharedpreferences = getSharedPreferences("AppSession", Context.MODE_PRIVATE);
+
+        return sharedpreferences.getString("user","nil");
+
+    }
+
+    public String getUserPassword(){
+
+        SharedPreferences sharedpreferences = getSharedPreferences("AppSession", Context.MODE_PRIVATE);
+
+        return sharedpreferences.getString("password","nil");
 
     }
 
@@ -143,31 +190,37 @@ public class HomeNav extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment = null, prev_frag=null;
+        Fragment fragment = null;
+        FragmentTransaction transaction;
+        transaction = getSupportFragmentManager().beginTransaction();
 
         if (id == R.id.nav_profile) {
 
+            fragment = new AccountFragment();
+
         } else if (id == R.id.nav_post) {
 
-            prev_frag = fragment;
-            fragment = new PostFragment(getApplicationContext(), getSupportActionBar());
+            fragment = new PostFragment();
 
         } else if (id == R.id.nav_circular) {
 
-            prev_frag = fragment;
+
+            Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show();
+
             fragment = new CircularFragment();
 
         } else if (id == R.id.nav_link) {
 
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unifiedportal-mem.epfindia.gov.in/"));
+            startActivity(browserIntent);
+
         } else if (id == R.id.nav_logout) {
+
+            logout();
 
         }
 
         if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-            if(prev_frag != null)
-                transaction.remove(prev_frag);
 
             transaction.replace(R.id.home_frame, fragment);
             transaction.commit();

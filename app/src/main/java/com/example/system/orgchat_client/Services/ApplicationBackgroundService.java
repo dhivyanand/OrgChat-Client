@@ -102,11 +102,11 @@ public class ApplicationBackgroundService extends Service {
         return true;
     }
 
-    public void check_and_sync_circular(String uname, String pass){
+    public void check_and_sync_circular(String uname, String pass , Context context){
 
         try {
 
-            SQLiteDatabase mydatabase = getApplicationContext().openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
+            SQLiteDatabase mydatabase = context.openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
 
             Cursor resultSet = mydatabase.rawQuery("Select LAST_UPDATE, COUNT from DATE where TYPE='Circular'",null);
 
@@ -122,7 +122,7 @@ public class ApplicationBackgroundService extends Service {
                 req.put("password",pass);
                 req.put("time_stamp",lastupdate);
 
-                res = APIRequest.processRequest(req, Constant.root_URL+"syncCircular.php",getApplicationContext());
+                res = APIRequest.processRequest(req, Constant.root_URL+"syncCircular.php",context);
 
             }else{
 
@@ -131,7 +131,7 @@ public class ApplicationBackgroundService extends Service {
                 req.put("password",pass);
                 req.put("time_stamp","all");
 
-                res = APIRequest.processRequest(req, Constant.root_URL+"syncCircular.php",getApplicationContext());
+                res = APIRequest.processRequest(req, Constant.root_URL+"syncCircular.php",context);
 
             }
 
@@ -183,7 +183,8 @@ public class ApplicationBackgroundService extends Service {
             mydatabase.close();
 
         }catch(Exception e){
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            System.out.println("errors"+e.toString());
+            e.printStackTrace();
         }
 
     }
@@ -203,6 +204,8 @@ public class ApplicationBackgroundService extends Service {
 
             mydatabase.execSQL("delete from DEPARTMENT");
 
+
+
             JSONArray obj = null;
             try {
                 obj = (JSONArray) new JSONParser().parse(res);
@@ -212,8 +215,8 @@ public class ApplicationBackgroundService extends Service {
                 int i=0;
                 String last_update="0";
 
-
                 mydatabase.execSQL("delete from DEPARTMENT");
+                mydatabase.execSQL("delete from SUBDEPARTMENT");
 
                 while (iterator.hasNext()) {
                     //iterator.next().toJSONString();
@@ -225,7 +228,7 @@ public class ApplicationBackgroundService extends Service {
 
                     last_update = (String)dept.get("last_update");
 
-                    mydatabase.execSQL("insert into DEPARTMENT values ('"+dept_id+"','"+dept+"')");
+                    mydatabase.execSQL("insert into DEPARTMENT values ('"+dept_id+"','"+dept_name+"')");
 
                     Map<String,String> subdpt = new HashMap<String,String>();
 
@@ -244,7 +247,7 @@ public class ApplicationBackgroundService extends Service {
                             String subdeptname = (String) object.get("name");
                             String subdeptid = (String) object.get("id");
 
-                            mydatabase.execSQL("insert into SUBDEPARTMENT values ('" + subdeptid + "','" + subdept + "','" + dept + "')");
+                            mydatabase.execSQL("insert into SUBDEPARTMENT values ('" + subdeptid + "','" + subdeptname + "','" + dept_name + "')");
 
                             System.out.println("\t" + subdeptname + "   " + subdeptid);
 
@@ -294,7 +297,7 @@ public class ApplicationBackgroundService extends Service {
 
             }
 
-            check_and_sync_circular(uname, pass);
+            check_and_sync_circular(uname, pass , getApplicationContext());
 
         }
 

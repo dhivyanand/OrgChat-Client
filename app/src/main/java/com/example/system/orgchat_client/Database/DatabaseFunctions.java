@@ -2,6 +2,11 @@ package com.example.system.orgchat_client.Database;
 
 public class DatabaseFunctions {
 
+    public static String createUserTable(){
+
+        return "CREATE TABLE USER (NAME VARCHAR, DOB VARCHAR, PHONE VARCHAR, ADDRESS VARCHAR)";
+    }
+
     public static String createDepartmentTable(){
 
         return "CREATE TABLE DEPARTMENT (DEPARTMENT_ID VARCHAR,DEPARTMENT VARCHAR)";

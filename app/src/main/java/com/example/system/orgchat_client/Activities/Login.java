@@ -40,14 +40,26 @@ public class Login extends AppCompatActivity {
 
             obj = new JSONObject(res);
 
-            String result = (String)obj.get("result");
+            String name, dob, phone, address, result;
 
-            if(result.equals("TRUE"))
+            name = (String)obj.get("name");
+            dob = (String)obj.get("dob");
+            phone = (String)obj.get("phone");
+            address = (String)obj.get("address");
+            result = (String)obj.get("result");
+
+            if(result.equals("TRUE")) {
+
+                SQLiteDatabase mydatabase = openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
+                mydatabase.execSQL("insert into USER values('"+name+"','"+dob+"','"+phone+"','"+address+"')");
                 return true;
-            else
+
+            }else {
                 return false;
+            }
 
         } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -103,11 +115,15 @@ public class Login extends AppCompatActivity {
 
                 if (uname != "" && pass != "") {
 
-                    if(verify_user(uname,pass)){
+                    if(create_local_database()) {
 
-                        if(create_local_pref(uname,pass) && create_local_database()){
-                            startActivity(new Intent(Login.this,HomeNav.class));
-                            finish();
+                        if (verify_user(uname, pass)) {
+
+                            if (create_local_pref(uname, pass)) {
+                                startActivity(new Intent(Login.this, HomeNav.class));
+                                finish();
+                            }
+
                         }
 
                     }

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -30,8 +31,11 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.system.orgchat_client.Activities.CompliantActivity;
 import com.example.system.orgchat_client.Activities.NewCompliant;
+import com.example.system.orgchat_client.Activities.NewSuggestion;
 import com.example.system.orgchat_client.Adapters.CircularListAdapter;
+import com.example.system.orgchat_client.Constant;
 import com.example.system.orgchat_client.R;
 
 import org.json.JSONObject;
@@ -56,6 +60,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.lang.Object;
 
+import static android.content.Context.CONSUMER_IR_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class SuggestionSwipeFragment extends Fragment {
@@ -78,11 +83,16 @@ public class SuggestionSwipeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_suggestion_swipe, container, false);
 
-        Button newcompliant = (Button)root.findViewById(R.id.newsuggestion);
-        ListView list = (ListView)root.findViewById(R.id.list);
+        Constant.a = getActivity().getSupportFragmentManager().findFragmentById(getId());
 
-        ArrayList<String> compliant,date;
+        Toast.makeText(getContext(), "Suggestion Fragment", Toast.LENGTH_SHORT).show();
+
+        Button newcompliant = (Button)root.findViewById(R.id.newsuggestion);
+        ListView list = (ListView)root.findViewById(R.id.lists);
+
+        final ArrayList<String> compliant,compliantID,date;
         compliant = new ArrayList<String>();
+        compliantID = new ArrayList<String>();
         date = new ArrayList<String>();
 
         CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date);
@@ -92,7 +102,16 @@ public class SuggestionSwipeFragment extends Fragment {
         newcompliant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), NewCompliant.class));
+                startActivity(new Intent(getContext(), NewSuggestion.class));
+            }
+        });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                startActivity(new Intent(getContext(), CompliantActivity.class).putExtra("message_id",compliantID.get(i)));
+
             }
         });
 
@@ -100,14 +119,15 @@ public class SuggestionSwipeFragment extends Fragment {
 
             SQLiteDatabase mydatabase = getContext().openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
 
-            Cursor resultSet = mydatabase.rawQuery("Select TITLE, DATE from MESSAGE where MESSAGE_TYPE = 'S' ",null);
+            Cursor resultSet = mydatabase.rawQuery("Select TITLE, MESSAGE_ID, DATE from MESSAGE where MESSAGE_TYPE = 'S' ",null);
 
             if(resultSet.moveToFirst()) {
 
                 do {
 
                     compliant.add(resultSet.getString(0));
-                    date.add(resultSet.getString(1));
+                    compliantID.add(resultSet.getString(1));
+                    date.add(resultSet.getString(2));
 
                     adapter.notifyDataSetChanged();
 
