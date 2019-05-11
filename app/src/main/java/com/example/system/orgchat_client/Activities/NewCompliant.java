@@ -33,6 +33,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -68,6 +69,7 @@ public class NewCompliant extends AppCompatActivity {
     ArrayList<Uri> file_uri;
     String first_dept;
     RelativeLayout popup;
+    ProgressBar progress;
 
     int READ_REQUEST_CODE = 42;
 
@@ -361,6 +363,8 @@ public class NewCompliant extends AppCompatActivity {
 
         popup = (RelativeLayout)findViewById(R.id.popup_layout);
 
+        progress = (ProgressBar)findViewById(R.id.progressBar);
+
         thumbnail = new ArrayList<Bitmap>();
         is_video = new ArrayList<Boolean>();
         path = new ArrayList<String>();
@@ -483,6 +487,7 @@ public class NewCompliant extends AppCompatActivity {
                     post.setEnabled(false);
 
                     if(sendToServer(t,desc,path,null)){
+                        progress.setVisibility(View.VISIBLE);
                         Toast.makeText(NewCompliant.this, "Message sent successfully.", Toast.LENGTH_SHORT).show();
                         finish();
                     }

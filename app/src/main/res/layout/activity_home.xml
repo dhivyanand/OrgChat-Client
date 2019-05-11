@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#9E9E9E"
+    android:background="#000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.system.orgchat_client.Activities.home">
@@ -21,11 +21,11 @@
         android:layout_above="@+id/center_top"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#757575"
+        android:background="#000"
         android:gravity="center"
         android:text="  SACL ePostBox"
         android:textAlignment="center"
-        android:textColor="#FDD835"
+        android:textColor="#FFF"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:elevation="8dp"
             >
 
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="User"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -98,7 +98,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="Notices"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -162,13 +162,13 @@
                     android:layout_height="?android:attr/actionBarSize" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Suggestion"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -180,7 +180,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -202,13 +202,13 @@
                     android:layout_height="?android:attr/actionBarSize" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Compliant"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -223,7 +223,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -245,13 +245,13 @@
                     android:layout_height="?android:attr/actionBarSize" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="ESI Hospitals"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -263,7 +263,7 @@
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:backgroundTint="#FDD835"
+            android:backgroundTint="#1A237E"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -285,13 +285,13 @@
                     android:layout_height="?android:attr/actionBarSize" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="EPF India"
                     android:textAlignment="center"
-                    android:textColor="#0288D1"
+                    android:textColor="#FFF"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -307,15 +307,16 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#FDD835"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#1A237E"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:tint="#FFF"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
     <ImageView
