@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.system.orgchat_client.Adapters.AttachmentAdapter;
+import com.example.system.orgchat_client.FileOpen;
 import com.example.system.orgchat_client.R;
 
 import org.w3c.dom.Text;
@@ -26,7 +27,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
@@ -160,9 +163,9 @@ public class CircularActivity extends AppCompatActivity {
 
                     try {
 
-                        String url = "https://ide50-dhivianand998.legacy.cs50.io:8080/Org_chat_Server/scripts/syncFile.php";
+                        String url = "http://epostbox.sakthiauto.com/syncFile.php";
                         URL obj = new URL(url);
-                        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+                        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
                         //add reuqest header
                         con.setRequestMethod("POST");
@@ -179,11 +182,12 @@ public class CircularActivity extends AppCompatActivity {
 
                         DataInputStream din = new DataInputStream(con.getInputStream());
 
-                        File f = new File(Environment.getExternalStorageDirectory() + File.separator + "/OrgChatClient");
+                        File f = new File(Environment.getExternalStorageDirectory() + File.separator + "/OrgChatClient/");
                         f.mkdir();
                         File file = new File(f, name);
 
-                        file_name = file.getPath();
+                        file_name = file.getAbsolutePath();
+                        file_name = Environment.getExternalStorageDirectory() + File.separator + "/OrgChatClient/"+name;
 
                         file.createNewFile();
 
@@ -208,10 +212,7 @@ public class CircularActivity extends AppCompatActivity {
             try {
                 t.start();
                 t.join();
-                if(a.size()>0)
-                    Toast.makeText(c, a.get(0), Toast.LENGTH_SHORT).show();
             }catch(Exception e){
-                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
                 return false;
             }
             return true;
@@ -226,6 +227,8 @@ public class CircularActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circular);
+
+        getSupportActionBar().setTitle("Notices");
 
         TextView title, desc;
         final ListView attachment_list;
@@ -267,8 +270,6 @@ public class CircularActivity extends AppCompatActivity {
 
                 }else{
 
-                    Toast.makeText(CircularActivity.this, attachment_location.get(i), Toast.LENGTH_SHORT).show();
-
                     File file = new File(attachment_location.get(i));
 
                     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -279,7 +280,13 @@ public class CircularActivity extends AppCompatActivity {
 
                     intent.setDataAndType(data, "*/*");
 
-                    startActivity(intent);
+                    try {
+                        FileOpen.openFile(getApplicationContext(),file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    //startActivity(intent);
 
                 }
 

@@ -1,5 +1,6 @@
 package com.example.system.orgchat_client.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +15,14 @@ import java.util.ArrayList;
 public class CircularListAdapter extends BaseAdapter {
 
     Context c;
-    ArrayList<String> title,date;
+    ArrayList<String> title,date,status;
 
-    public CircularListAdapter(Context c, ArrayList<String> title, ArrayList<String> date){
+    public CircularListAdapter(Context c, ArrayList<String> title, ArrayList<String> date, ArrayList<String> status){
 
         this.c = c;
         this.title = title;
         this.date = date;
+        this.status = status;
 
     }
 
@@ -39,6 +41,7 @@ public class CircularListAdapter extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
@@ -51,6 +54,10 @@ public class CircularListAdapter extends BaseAdapter {
 
         content.setText(title.get(i));
         d.setText(date.get(i));
+
+        if(status.get(i).equals("unread")){
+            d.setTextColor(c.getResources().getColor(android.R.color.holo_green_dark));
+        }
 
         return root;
 

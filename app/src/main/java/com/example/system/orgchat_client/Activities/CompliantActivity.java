@@ -16,12 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.system.orgchat_client.Adapters.AttachmentAdapter;
+import com.example.system.orgchat_client.FileOpen;
 import com.example.system.orgchat_client.R;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -152,9 +155,9 @@ public class CompliantActivity extends AppCompatActivity {
 
                 try {
 
-                    String url = "https://ide50-dhivianand998.legacy.cs50.io:8080/Org_chat_Server/scripts/syncFile.php";
+                    String url = "http://epostbox.sakthiauto.com/syncFile.php";
                     URL obj = new URL(url);
-                    HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
                     //add reuqest header
                     con.setRequestMethod("POST");
@@ -200,8 +203,7 @@ public class CompliantActivity extends AppCompatActivity {
         try {
             t.start();
             t.join();
-            if(a.size()>0)
-                Toast.makeText(c, a.get(0), Toast.LENGTH_SHORT).show();
+
         }catch(Exception e){
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             return false;
@@ -218,6 +220,8 @@ public class CompliantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compliant);
+
+        getSupportActionBar().setTitle("Compliant");
 
         TextView title, desc;
         final ListView attachment_list;
@@ -259,8 +263,6 @@ public class CompliantActivity extends AppCompatActivity {
 
                 }else{
 
-                    Toast.makeText(CompliantActivity.this, attachment_name.get(i), Toast.LENGTH_SHORT).show();
-
                     File file = new File(attachment_location.get(i));
 
                     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -271,7 +273,13 @@ public class CompliantActivity extends AppCompatActivity {
 
                     intent.setDataAndType(data, "*/*");
 
-                    startActivity(intent);
+                    try {
+                        FileOpen.openFile(getApplicationContext(),file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    //startActivity(intent);
 
                 }
 

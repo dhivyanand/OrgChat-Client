@@ -89,8 +89,6 @@ public class ApplicationBackgroundService extends Service {
             else
                 return false;
 
-
-
         }
 
 
@@ -105,7 +103,6 @@ public class ApplicationBackgroundService extends Service {
     public void check_and_sync_circular(String uname, String pass , Context context){
 
         try {
-
             SQLiteDatabase mydatabase = context.openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
 
             Cursor resultSet = mydatabase.rawQuery("Select LAST_UPDATE, COUNT from DATE where TYPE='Circular'",null);
@@ -135,7 +132,6 @@ public class ApplicationBackgroundService extends Service {
 
             }
 
-
             JSONArray obj = null;
 
                 obj = (JSONArray) new JSONParser().parse(res);
@@ -144,7 +140,7 @@ public class ApplicationBackgroundService extends Service {
                 JSONObject key = null;
                 int i=0;
 
-                mydatabase.execSQL("delete from CIRCULAR");
+                //mydatabase.execSQL("delete from CIRCULAR");
 
                 String id, title, content, attachment_list, time=null;
 
@@ -170,14 +166,14 @@ public class ApplicationBackgroundService extends Service {
                      for(int c=0 ; c < attachments.length ; c++) {
                          mydatabase.execSQL("insert into FILE values('" + id + "','" + attachments[c] + "','not_available')");
                      }
-                    mydatabase.execSQL("insert into CIRCULAR values('"+id+"','"+title+"','"+content+"','"+time+"')");
+                    mydatabase.execSQL("insert into CIRCULAR values('"+id+"','"+title+"','"+content+"','"+time+"','NR')");
 
                     i++;
 
                 }
 
-                mydatabase.execSQL("delete from DATE where TYPE = 'circular'");
-                mydatabase.execSQL("insert into DATE values('circular','"+time+"','"+String.valueOf(i)+"')");
+                mydatabase.execSQL("delete from DATE where TYPE = 'Circular'");
+                mydatabase.execSQL("insert into DATE values('Circular','"+time+"','"+String.valueOf(i)+"')");
 
             resultSet.close();
             mydatabase.close();
@@ -203,8 +199,6 @@ public class ApplicationBackgroundService extends Service {
             String res = APIRequest.processRequest(req, Constant.root_URL+"fetchAllDept.php",getApplicationContext());
 
             mydatabase.execSQL("delete from DEPARTMENT");
-
-
 
             JSONArray obj = null;
             try {
@@ -280,7 +274,7 @@ public class ApplicationBackgroundService extends Service {
     @Override
     public void onCreate(){
 
-        Toast.makeText(this, "Started the Service.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Started the Service.", Toast.LENGTH_SHORT).show();
 
         SharedPreferences sharedpreferences = getSharedPreferences("AppSession", Context.MODE_PRIVATE);
 

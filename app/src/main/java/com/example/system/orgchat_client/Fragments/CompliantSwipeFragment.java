@@ -59,11 +59,12 @@ public class CompliantSwipeFragment extends Fragment {
         Button newcompliant = (Button)roots.findViewById(R.id.newcompliant);
         ListView list = (ListView)roots.findViewById(R.id.list);
 
-        ArrayList<String> compliant,date;
+        final ArrayList<String> compliant,date,compliantID;
         compliant = new ArrayList<String>();
         date = new ArrayList<String>();
+        compliantID = new ArrayList<String>();
 
-        CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date);
+        CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date,null);
 
         list.setAdapter(adapter);
 
@@ -78,7 +79,7 @@ public class CompliantSwipeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                startActivity(new Intent(getContext(), CompliantActivity.class));
+                startActivity(new Intent(getContext(), CompliantActivity.class).putExtra("message_id",compliantID.get(i)));
 
             }
         });
@@ -87,7 +88,7 @@ public class CompliantSwipeFragment extends Fragment {
 
             SQLiteDatabase mydatabase = getContext().openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
 
-            Cursor resultSet = mydatabase.rawQuery("Select TITLE, DATE from MESSAGE where MESSAGE_TYPE = 'C' ",null);
+            Cursor resultSet = mydatabase.rawQuery("Select TITLE, DATE, MESSAGE_ID from MESSAGE where MESSAGE_TYPE = 'C' ",null);
 
             if(resultSet.moveToFirst()) {
 
@@ -95,6 +96,7 @@ public class CompliantSwipeFragment extends Fragment {
 
                     compliant.add(resultSet.getString(0));
                     date.add(resultSet.getString(1));
+                    compliantID.add(resultSet.getString(2));
 
                     adapter.notifyDataSetChanged();
 

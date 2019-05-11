@@ -16,20 +16,22 @@
     <EditText
         android:id="@+id/uname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/description_bg"
         android:layout_above="@+id/space"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Registration"
         android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textAlignment="center" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/description_bg"
         android:layout_below="@+id/space"
         android:layout_centerHorizontal="true"
         android:paddingLeft="10dp"
@@ -37,6 +39,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textAlignment="center" />
 
     <Space

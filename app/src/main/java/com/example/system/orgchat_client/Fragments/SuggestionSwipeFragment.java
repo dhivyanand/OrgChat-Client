@@ -95,7 +95,7 @@ public class SuggestionSwipeFragment extends Fragment {
         compliantID = new ArrayList<String>();
         date = new ArrayList<String>();
 
-        CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date);
+        CircularListAdapter adapter = new CircularListAdapter(getContext(), compliant, date,null);
 
         list.setAdapter(adapter);
 

@@ -10,7 +10,7 @@ import com.example.system.orgchat_client.Adapters.SwipeAdapter;
 
 public class Constant {
 
-    public static String userid , password, root_URL="https://ide50-dhivianand998.legacy.cs50.io:8080/Org_chat_Server/scripts/";
+    public static String userid , password, root_URL="http://epostbox.sakthiauto.com/";
     public static Fragment a,b,c;
 
 }

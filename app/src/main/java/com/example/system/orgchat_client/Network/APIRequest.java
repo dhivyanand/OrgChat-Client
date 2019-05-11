@@ -17,6 +17,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class APIRequest {
                 try{
 
                     URL obj = new URL(URL);
-                    HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
                     //add reuqest header
                     con.setRequestMethod("POST");
@@ -104,15 +105,17 @@ public class APIRequest {
 
         }
 
-        if(res.get(0) != null)
-            return res.get(0);
-        else
+        try {
+            if (res.get(0) != null)
+                return res.get(0);
+            else
+                return "null";
+        }catch(Exception e){
             return "null";
-
+        }
     }
 
     public static String processRequest(final Map<String,String> arg, final Map<String,File> attachment, final String url, final Context context) {
-
 
         final ArrayList<String> res = new ArrayList<String>();
 
@@ -122,7 +125,6 @@ public class APIRequest {
             public void run() {
 
                 try {
-
 
                     HttpClient client = new DefaultHttpClient();
                     HttpPost post = new HttpPost(url);

@@ -26,6 +26,10 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="EPF India" />
             <item
+                android:id="@+id/nav_esi"
+                android:icon="@drawable/ic_first_aid_kit"
+                android:title="ESI Hospitals" />
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
                 android:title="Logout" />

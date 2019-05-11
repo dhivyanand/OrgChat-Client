@@ -16,6 +16,7 @@ import com.example.system.orgchat_client.Database.CreateDatabaseUsingHelper;
 import com.example.system.orgchat_client.Network.APIRequest;
 import com.example.system.orgchat_client.R;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -40,10 +41,11 @@ public class Login extends AppCompatActivity {
 
             obj = new JSONObject(res);
 
-            String name, dob, phone, address, result;
+            String name, dob, phone, address, result, dp;
 
             name = (String)obj.get("name");
             dob = (String)obj.get("dob");
+            dp = obj.get("dp").toString();
             phone = (String)obj.get("phone");
             address = (String)obj.get("address");
             result = (String)obj.get("result");
@@ -51,15 +53,14 @@ public class Login extends AppCompatActivity {
             if(result.equals("TRUE")) {
 
                 SQLiteDatabase mydatabase = openOrCreateDatabase("org_chat_db", MODE_PRIVATE, null);
-                mydatabase.execSQL("insert into USER values('"+name+"','"+dob+"','"+phone+"','"+address+"')");
+                mydatabase.execSQL("insert into USER values('"+name+"','"+dob+"','" + dp + "','"+phone+"','"+address+"')");
                 return true;
 
             }else {
                 return false;
             }
 
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+        } catch (JSONException e) {
             return false;
         }
 
@@ -103,6 +104,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().setTitle("Login");
+
         username = (EditText)findViewById(R.id.uname);
         password = (EditText)findViewById(R.id.password);
         login = (Button)findViewById(R.id.button);
@@ -120,7 +123,7 @@ public class Login extends AppCompatActivity {
                         if (verify_user(uname, pass)) {
 
                             if (create_local_pref(uname, pass)) {
-                                startActivity(new Intent(Login.this, HomeNav.class));
+                                startActivity(new Intent(Login.this, home.class));
                                 finish();
                             }
 
